@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/widgets/nav-drawer.dart';
+import 'package:provider/provider.dart';
+import 'providers/auth.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(create: (_) => Auth(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -42,7 +44,15 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       drawer: NavDrawer(),
-      body: Center(child: Text("Inicia sesion")),
+      body: Center(child: Consumer<Auth>(
+        builder: (context, auth, child) {
+          if (auth.authenticated) {
+            return Text('You are logged in');
+          } else {
+            return Text('You are not logged in');
+          }
+        },
+      )),
     );
   }
 }
