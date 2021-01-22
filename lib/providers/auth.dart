@@ -7,4 +7,9 @@ class Auth extends ChangeNotifier {
     _authenticated = true;
     notifyListeners();
   }
+
+  void logout() {
+    _authenticated = false;
+    notifyListeners();
+  }
 }
