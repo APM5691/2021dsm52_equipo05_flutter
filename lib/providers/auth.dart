@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart' as Dio;
 
 import 'package:flutter_authentication_with_laravel_sanctum/models/user.dart';
+import 'package:platform_device_id/platform_device_id.dart';
 import '../dio.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -14,8 +15,9 @@ class Auth extends ChangeNotifier {
   User get user => _user;
 
   Future login({Map credentials}) async {
-    Dio.Response response =
-        await dio().post('auth/token', data: json.encode(credentials));
+    String deviceId = await getDeviceId();
+    Dio.Response response = await dio().post('auth/token',
+        data: json.encode(credentials..addAll({'deviceId': deviceId})));
 
     String token = json.decode(response.toString())['token'];
 
@@ -32,6 +34,16 @@ class Auth extends ChangeNotifier {
       _authenticated = false;
     }
     notifyListeners();
+  }
+
+  Future getDeviceId() async {
+    String deviceId;
+    try {
+      deviceId = await PlatformDeviceId.getDeviceId;
+    } catch (e) {
+      //
+    }
+    return deviceId;
   }
 
   void logout() {
