@@ -2,6 +2,6 @@
     package="com.example.flutter_authentication_with_laravel_sanctum">
     <!-- Flutter needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
-    -->
+    --><application android:usesCleartextTraffic="true" />
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

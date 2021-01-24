@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/providers/auth.dart';
@@ -36,7 +34,7 @@ class LoginState extends State<LoginScreen> {
                 padding: EdgeInsets.all(16),
                 child: Column(children: [
                   TextFormField(
-                      initialValue: 'alex@codecourse.com',
+                      initialValue: 'al221910938@gmail.com',
                       decoration: InputDecoration(
                           labelText: "Email", hintText: "you@domewhere.com"),
                       onSaved: (value) {
