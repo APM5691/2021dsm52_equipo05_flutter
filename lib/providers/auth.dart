@@ -47,6 +47,10 @@ class Auth extends ChangeNotifier {
     return await storage.read(key: 'auth');
   }
 
+  deleteToken() async {
+    return await storage.read(key: 'auth');
+  }
+
   Future getDeviceId() async {
     String deviceId;
     try {
@@ -57,8 +61,15 @@ class Auth extends ChangeNotifier {
     return deviceId;
   }
 
-  void logout() {
+  void logout() async {
     _authenticated = false;
+
+    await dio().delete('auth/token',
+        data: {'deviceId': await getDeviceId()},
+        options: Dio.Options(headers: {'auth': true}));
+
+    await deleteToken();
+
     notifyListeners();
   }
 }
