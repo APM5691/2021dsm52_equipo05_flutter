@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/widgets/nav-drawer.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 import 'providers/auth.dart';
 
@@ -31,6 +32,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final storage = new FlutterSecureStorage();
+
+  void _attemptAuthentication() async {
+    final key = await storage.read(key: 'auth');
+    Provider.of<Auth>(context, listen: false).attempt(key);
+  }
+
+  @override
+  void initState() {
+    _attemptAuthentication();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
