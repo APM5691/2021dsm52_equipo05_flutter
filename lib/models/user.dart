@@ -20,11 +20,11 @@ class User {
     return '${this.id} ${this.name} ${this.email}';
   }
 
-  static Resourse get me {
-    return Resourse(
+  static Resource get me {
+    return Resource(
         url: 'auth/me',
         parse: (reponse) {
-          return User.fromJson(json.decode(reponse.body['data']));
+          return User.fromJson(json.decode(reponse.body)['data']);
         });
   }
 }

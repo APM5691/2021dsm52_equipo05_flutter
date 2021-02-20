@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/widgets/nav-drawer.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
+import 'models/Article.dart';
 import 'providers/auth.dart';
+import 'webservice.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(create: (_) => Auth(), child: MyApp()));
@@ -58,14 +60,26 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       drawer: NavDrawer(),
-      body: Center(child: Consumer<Auth>(
-        builder: (context, auth, child) {
-          if (auth.authenticated) {
-            return Text('You are logged in');
-          } else {
-            return Text('You are not logged in');
+      body: Center(
+        child: FutureBuilder(
+          future: Webservice.load(Article.all),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+          itemCount: snapshot.data.length,
+          itemBuilder: (context, index){
+            Article article= snapshot.data[index];
+
+           return ListTile(
+             title: Text(article.title),
+             subtitle: Text(article.description),
+           );
+          },
+            );
+          } 
+            return CircularProgressIndicator();
           }
-        },
+        
       )),
     );
   }

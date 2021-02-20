@@ -14,3 +14,4 @@ class Webservice {
     return resource.parse(response);
   }
 
+}
