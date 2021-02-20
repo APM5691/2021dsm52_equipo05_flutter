@@ -18,7 +18,7 @@ class Auth extends ChangeNotifier {
 
   Future login({Map credentials}) async {
     String deviceId = await getDeviceId();
-    Dio.Response response = await dio().post('auth/token',
+    Dio.Response response = await dio().post('/tokens/create',
         data: json.encode(credentials..addAll({'deviceId': deviceId})));
 
     String token = json.decode(response.toString())['token'];
@@ -29,7 +29,7 @@ class Auth extends ChangeNotifier {
 
   Future attempt(String token) async {
     try {
-      Dio.Response response = await dio().get('auth/user',
+      Dio.Response response = await dio().get('/user',
           options: Dio.Options(headers: {'Authorization': 'Bearer $token'}));
       _user = User.fromJson(json.decode(response.toString()));
       _authenticated = true;
@@ -64,7 +64,7 @@ class Auth extends ChangeNotifier {
   void logout() async {
     _authenticated = false;
 
-    await dio().delete('auth/token',
+    await dio().delete('/tokens',
         data: {'deviceId': await getDeviceId()},
         options: Dio.Options(headers: {'auth': true}));
 
