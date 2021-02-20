@@ -77,6 +77,19 @@ class _MyHomePageState extends State<MyHomePage> {
           },
             );
           } 
+          if(snapshot.hasError){
+            return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('Culd not get list of articles'),
+
+                  RaisedButton(
+                    child:Text('Tap to reply'),
+                    onPressed:() => setState(()=> {}),
+                  )
+                ],
+            );
+          }
             return CircularProgressIndicator();
           }
         
