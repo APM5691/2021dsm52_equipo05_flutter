@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/providers/auth.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/posts-screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/screen/vista-videos-screen.dart';
 import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -34,6 +35,15 @@ class NavDrawer extends StatelessWidget {
                 title: Text("Logout"),
                 onTap: () {
                   Provider.of<Auth>(context, listen: false).logout();
+                },
+              ),
+              ListTile(
+                title: Text("Vista Videos"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => VistaVideosScreen()));
                 },
               )
             ],
