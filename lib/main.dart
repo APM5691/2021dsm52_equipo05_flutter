@@ -15,9 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(title: 'Autenticacion'),
@@ -61,39 +62,36 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       drawer: NavDrawer(),
       body: Center(
-        child: FutureBuilder(
-          future: Webservice.load(Article.all),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-          itemCount: snapshot.data.length,
-          itemBuilder: (context, index){
-            Article article= snapshot.data[index];
+          child: FutureBuilder(
+              future: Webservice.load(Article.all),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                      Article article = snapshot.data[index];
 
-           return ListTile(
-             title: Text(article.title),
-             subtitle: Text(article.description),
-           );
-          },
-            );
-          } 
-          if(snapshot.hasError){
-            return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text('Culd not get list of articles'),
-
-                  RaisedButton(
-                    child:Text('Tap to reply'),
-                    onPressed:() => setState(()=> {}),
-                  )
-                ],
-            );
-          }
-            return CircularProgressIndicator();
-          }
-        
-      )),
+                      return ListTile(
+                        title: Text(article.title),
+                        subtitle: Text(article.description),
+                      );
+                    },
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text('Culd not get list of articles'),
+                      RaisedButton(
+                        child: Text('Tap to reply'),
+                        onPressed: () => setState(() => {}),
+                      )
+                    ],
+                  );
+                }
+                return CircularProgressIndicator();
+              })),
     );
   }
 }

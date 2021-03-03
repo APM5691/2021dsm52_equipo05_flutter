@@ -16,22 +16,18 @@ class Article {
     );
   }
 
- 
   static Resource get all {
     return Resource(
         url: 'articles',
         parse: (reponse) {
-          Iterable list=   json.decode(reponse.body)['data'];
-          
+          Iterable list = json.decode(reponse.body)['data'];
 
-          return list.map(article) {
-            return Article.fromJson(
-              article
-            );
-          }
-          .toList();
-        }
-      );
+          // return list.map(article) {
+          //   return Article.fromJson(
+          //     article
+          //   );
+          // }
+          // .toList();
+        });
   }
 }
-
