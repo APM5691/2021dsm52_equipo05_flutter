@@ -60,7 +60,7 @@ class _ProductoScreenState extends State<ProductoScreen> {
           helperText: 'Clave',
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
-      onSaved: (value) {
+      onChanged: (value) {
         widget.producto.clave = value;
       },
     );
@@ -77,7 +77,7 @@ class _ProductoScreenState extends State<ProductoScreen> {
           helperText: 'Nombre del producto',
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
-      onSaved: (value) {
+      onChanged: (value) {
         widget.producto.nombreProducto = value;
       },
     );
@@ -95,7 +95,7 @@ class _ProductoScreenState extends State<ProductoScreen> {
           helperText: 'Numero de existencias',
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
-      onSaved: (value) {
+      onChanged: (value) {
         widget.producto.numeroExistencias = int.parse(value);
       },
     );
@@ -112,7 +112,7 @@ class _ProductoScreenState extends State<ProductoScreen> {
           helperText: 'Precio',
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
-      onSaved: (value) {
+      onChanged: (value) {
         widget.producto.precio = int.parse(value);
       },
     );
@@ -128,7 +128,7 @@ class _ProductoScreenState extends State<ProductoScreen> {
           helperText: 'Descripción',
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
-      onSaved: (value) {
+      onChanged: (value) {
         widget.producto.descripcion = value;
       },
     );
@@ -144,7 +144,7 @@ class _ProductoScreenState extends State<ProductoScreen> {
           helperText: 'Medida',
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
-      onSaved: (value) {
+      onChanged: (value) {
         widget.producto.medida = value;
       },
     );
@@ -161,7 +161,7 @@ class _ProductoScreenState extends State<ProductoScreen> {
           helperText: 'Precio de oferta',
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
-      onSaved: (value) {
+      onChanged: (value) {
         widget.producto.precioOferta = int.parse(value);
       },
     );
@@ -177,7 +177,7 @@ class _ProductoScreenState extends State<ProductoScreen> {
           helperText: 'Fotografia',
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
-      onSaved: (value) {
+      onChanged: (value) {
         widget.producto.fotografia = value;
       },
     );
@@ -189,7 +189,8 @@ class _ProductoScreenState extends State<ProductoScreen> {
       child: TextButton(
         child: Text('guardar'),
         onPressed: () {
-          _formKey.currentState.save();
+          print("_submit");
+          // _formKey.currentState.save();
           _submit();
         },
       ),
@@ -224,7 +225,7 @@ class _ProductoScreenState extends State<ProductoScreen> {
   }
 
   void _submit() async {
-    if (0 >= widget.producto.numeroExistencias) {
+    if (0 >= widget.producto.id) {
       //crear, no existe
       print(widget.producto.toJson());
 
@@ -232,7 +233,7 @@ class _ProductoScreenState extends State<ProductoScreen> {
           data: json.encode(widget.producto.toJson()),
           options: Dio.Options(headers: {'auth': true}));
 
-      if (200 == response.statusCode) {
+      if (201 == response.statusCode) {
         _alerta(context, 'Producto', 'Producto creado');
       }
     } else {

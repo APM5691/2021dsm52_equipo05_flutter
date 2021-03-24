@@ -64,7 +64,7 @@ class LoginStateMX extends State<LoginScreenMX>
                     DelayedAnimation(
                         child: ClipOval(
                       child: Image.network(
-                        'https://images-cdn.9gag.com/photo/aBgwXGA_700b.jpg',
+                        'https://image.flaticon.com/icons/png/512/1298/1298030.png',
                         height: 200,
                         width: 200,
                         fit: BoxFit.cover,
@@ -72,7 +72,7 @@ class LoginStateMX extends State<LoginScreenMX>
                     )),
                     DelayedAnimation(
                       child: Text(
-                        "Hi There",
+                        "Hola",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 35.0),
                       ),
@@ -80,7 +80,7 @@ class LoginStateMX extends State<LoginScreenMX>
                     ),
                     DelayedAnimation(
                       child: Text(
-                        "I'm Reflectly",
+                        "inicia sesión",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 35.0),
                       ),
@@ -91,14 +91,14 @@ class LoginStateMX extends State<LoginScreenMX>
                     ),
                     DelayedAnimation(
                       child: Text(
-                        "Your New Personal",
+                        "Esto mejorara",
                         style: TextStyle(fontSize: 20.0),
                       ),
                       delay: delayedAmount + 3000,
                     ),
                     DelayedAnimation(
                       child: Text(
-                        "Journaling  companion",
+                        "tu experiencia como usuario.",
                         style: TextStyle(fontSize: 20.0),
                       ),
                       delay: delayedAmount + 3000,
@@ -122,7 +122,7 @@ class LoginStateMX extends State<LoginScreenMX>
                     ),
                     DelayedAnimation(
                       child: Text(
-                        "I Already have An Account".toUpperCase(),
+                        "crear una cuenta".toUpperCase(),
                         style: TextStyle(
                             fontSize: 20.0, fontWeight: FontWeight.bold),
                       ),
@@ -157,7 +157,7 @@ class LoginStateMX extends State<LoginScreenMX>
         ),
         child: Center(
           child: Text(
-            'Hi Reflectly',
+            'Iniciar sesion',
             style: TextStyle(
               fontSize: 20.0,
               fontWeight: FontWeight.bold,

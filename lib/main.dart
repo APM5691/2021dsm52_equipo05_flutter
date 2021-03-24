@@ -113,15 +113,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 //         constraints: BoxConstraints(
                 //           minHeight: 0.0,
                 //         ),child:
-                Column(children: <Widget>[
-              Container(
-                  child: Text(
-                'Joyeria Luminosete',
-                style: TextStyle(
-                  height: 2,
-                  fontSize: 25,
-                ),
-              )),
+                // Column(
+                ListView(padding: const EdgeInsets.all(8), children: <Widget>[
+              Expanded(
+                  child: Container(
+                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      child: Text(
+                        'Joyeria Luminosete',
+                        style: TextStyle(
+                          height: 2,
+                          fontSize: 25,
+                        ),
+                      ))),
               Column(children: [
                 CarouselSlider(
                   items: imageSliders,
@@ -154,14 +157,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   }).toList(),
                 ),
               ]),
-              Container(
-                  child: Text('El lujo no debe salir caro',
-                      style: TextStyle(
-                        height: 2,
-                        fontSize: 20,
-                      ))),
+              Expanded(
+                  child: Container(
+                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      child: Text('El lujo no debe salir caro',
+                          style: TextStyle(
+                            height: 2,
+                            fontSize: 20,
+                          )))),
               Divider(),
-              Container(child: Text('ANTECEDENTES DE LA ORGANIZACIÓN')),
+              Expanded(
+                  child: Container(
+                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      child: Text('ANTECEDENTES DE LA ORGANIZACIÓN'))),
               Divider(),
               Expanded(
                   child: Container(

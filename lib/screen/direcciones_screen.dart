@@ -2,39 +2,41 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' as Dio;
+import 'package:flutter_authentication_with_laravel_sanctum/models/direccion.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/models/venta.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/producto_screen.dart';
 import '../dio.dart';
 import '../models/producto.dart';
 
-class ProductosScreen extends StatefulWidget {
+class DireccionesScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return ProductosState();
+    return DireccionesState();
   }
 }
 
-class ProductosState extends State<ProductosScreen> {
-  Future<List<Producto>> getProductos() async {
+class DireccionesState extends State<DireccionesScreen> {
+  Future<List<Direccion>> getDirecciones() async {
     Dio.Response response = await dio()
-        .get('productos', options: Dio.Options(headers: {'auth': true}));
+        .get('direcciones', options: Dio.Options(headers: {'auth': true}));
     // print(response.data.toString());
     List posts = json.decode(response.toString())['data'];
-    return posts.map((post) => Producto.fromJson(post)).toList();
+    return posts.map((post) => Direccion.fromJson(post)).toList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Productos'),
+        title: Text('Direcciones'),
         actions: <Widget>[
           _agregaProducto(),
           _recargarProductos(),
         ],
       ),
       body: Center(
-        child: FutureBuilder<List<Producto>>(
-            future: getProductos(),
+        child: FutureBuilder<List<Direccion>>(
+            future: getDirecciones(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
@@ -43,17 +45,21 @@ class ProductosState extends State<ProductosScreen> {
                       var item = snapshot.data[index];
                       // return ListTile(title: Text(item.name));
                       return ListTile(
-                        title: Text(item.nombreProducto),
-                        subtitle: Text(item.precio.toString()),
-                        leading: Image.network(item.fotografia),
+                        title: Text(item.calle),
+                        subtitle: Text(item.numero.toString()),
+                        leading: Text(item.localidad +
+                            ' \n' +
+                            item.municipio +
+                            ' \n' +
+                            item.estado),
                         trailing: Icon(Icons.edit),
                         onTap: () {
                           // log('Agregar al carrito: ' + item.id.toString());
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      ProductoScreen(producto: item)));
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) =>
+                          //             ProductoScreen(producto: item)));
                         },
                       );
                     });
@@ -86,16 +92,7 @@ class ProductosState extends State<ProductosScreen> {
         ),
         onPressed: () {
           // print('agregar');
-          Producto producto = Producto(
-              id: 0,
-              clave: '',
-              nombreProducto: '',
-              numeroExistencias: 0,
-              precio: 0,
-              descripcion: '',
-              medida: '',
-              precioOferta: 0,
-              fotografia: '');
+          Producto producto = Producto();
 
           Navigator.push(
               context,
