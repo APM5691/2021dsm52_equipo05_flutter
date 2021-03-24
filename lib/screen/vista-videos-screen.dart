@@ -25,7 +25,6 @@ class VistaVideosScreen extends StatelessWidget {
               } else {
                 return Text('Hey WTF BRO??');
               }
-              return CircularProgressIndicator();
             }),
       ),
     );

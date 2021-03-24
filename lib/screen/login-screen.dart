@@ -34,14 +34,14 @@ class LoginState extends State<LoginScreen> {
                 padding: EdgeInsets.all(16),
                 child: Column(children: [
                   TextFormField(
-                      initialValue: 'al221910938@gmail.com',
+                      initialValue: 'al221910@gmail.com',
                       decoration: InputDecoration(
                           labelText: "Email", hintText: "you@domewhere.com"),
                       onSaved: (value) {
                         _email = value;
                       }),
                   TextFormField(
-                      initialValue: 'password',
+                      initialValue: '123456789',
                       decoration: InputDecoration(labelText: "Password"),
                       onSaved: (value) {
                         _password = value;

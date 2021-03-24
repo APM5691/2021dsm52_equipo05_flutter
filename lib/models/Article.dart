@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter_authentication_with_laravel_sanctum/webservice.dart';
 
 class Article {
@@ -20,14 +19,14 @@ class Article {
     return Resource(
         url: 'articles',
         parse: (reponse) {
-          Iterable list = json.decode(reponse.body)['data'];
+          // Iterable list = json.decode(reponse.body)['data'];
 
-          // return list.map(article) {
-          //   return Article.fromJson(
-          //     article
-          //   );
-          // }
-          // .toList();
+          //  return list.map(article) {
+          //    return Article.fromJson(
+          //      article
+          //    );
+          //  }
+          //  .toList();
         });
   }
 }
