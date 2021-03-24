@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/providers/auth.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/screen/crear-usuario-screen.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/screen/formulario-usuario-screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/No%20use/crear-usuario-screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/No%20use/formulario-usuario-screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen-max.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/screen/posts-screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/No%20use/posts-screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/productos_screen.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/screen/usuarios-screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/No%20use/usuarios-screen.dart';
 import 'package:provider/provider.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -56,40 +57,29 @@ class NavDrawer extends StatelessWidget {
                           builder: (context) => UsuariosScreen()));
                 },
               ),
+              // ListTile(
+              //   title: Text("Crear un nuevo usuario"),
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => CrearUsuarioScreen()));
+              //   },
+              // ),
+              // ListTile(
+              //   title: Text("Formulario"),
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => FormularioUsuario()));
+              //   },
+              // ),
               ListTile(
-                title: Text("Crear un nuevo usuario"),
+                title: Text("LoginMX"),
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CrearUsuarioScreen()));
-                },
-              ),
-              ListTile(
-                title: Text("Formulario"),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => FormularioUsuario()));
-                },
-              ),
-              ListTile(
-                title: Text("Productos"),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProductosScreen()));
-                },
-              ),
-              ListTile(
-                title: Text("Productos"),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProductosScreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginScreenMX()));
                 },
               ),
               ListTile(
@@ -102,7 +92,7 @@ class NavDrawer extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: Text("Productos"),
+                title: Text("Ventas"),
                 onTap: () {
                   Navigator.push(
                       context,
@@ -111,7 +101,7 @@ class NavDrawer extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: Text("Productos"),
+                title: Text("Materiales"),
                 onTap: () {
                   Navigator.push(
                       context,
@@ -120,34 +110,7 @@ class NavDrawer extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: Text("Productos"),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProductosScreen()));
-                },
-              ),
-              ListTile(
-                title: Text("Productos"),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProductosScreen()));
-                },
-              ),
-              ListTile(
-                title: Text("Productos"),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProductosScreen()));
-                },
-              ),
-              ListTile(
-                title: Text("Productos"),
+                title: Text("Direcciones"),
                 onTap: () {
                   Navigator.push(
                       context,

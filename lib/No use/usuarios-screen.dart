@@ -4,7 +4,7 @@ import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/models/usuarios.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/screen/detalle-usuarios-screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/No%20use/detalle-usuarios-screen.dart';
 
 import '../dio.dart';
 
