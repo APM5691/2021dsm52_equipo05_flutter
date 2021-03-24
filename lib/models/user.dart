@@ -5,19 +5,37 @@ class User {
   int id;
   String name;
   String email;
+  String primerApellido;
+  String segundoApellido;
+  String avatar;
+  String sexo;
+  String edad;
 
-  User({this.id, this.name, this.email});
+  User(
+      {this.id,
+      this.name,
+      this.email,
+      this.primerApellido,
+      this.segundoApellido,
+      this.avatar,
+      this.sexo,
+      this.edad});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'],
       name: json['name'],
       email: json['email'],
+      primerApellido: json['primer_apellido'],
+      segundoApellido: json['segundo_apellido'],
+      avatar: json['avatar'],
+      sexo: json['sexo'],
+      edad: json['edad'],
     );
   }
 
   String get fulldata {
-    return '${this.id} ${this.name} ${this.email}';
+    return '${this.id} ${this.name} ${this.email} ${this.primerApellido} ${this.segundoApellido} ${this.avatar} ${this.edad}';
   }
 
   static Resource get me {

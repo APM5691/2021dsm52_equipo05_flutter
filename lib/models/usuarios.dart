@@ -1,17 +1,17 @@
 class Usuarios {
-  String id;
+  int id;
   String name;
-  String apellido;
+  String primerApellido;
   String avatar;
   String edad;
 
-  Usuarios({this.id, this.name, this.apellido, this.avatar, this.edad});
+  Usuarios({this.id, this.name, this.primerApellido, this.avatar, this.edad});
 
   factory Usuarios.fromJson(Map<String, dynamic> json) {
     return Usuarios(
         id: json['id'],
         name: json['name'],
-        apellido: json['apellido'],
+        primerApellido: json['primer_apellido'],
         avatar: json['avatar'],
         edad: json['edad']);
   }
