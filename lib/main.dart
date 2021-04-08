@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/widgets/app-bar.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/widgets/nav-drawer.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
@@ -35,6 +36,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final storage = new FlutterSecureStorage();
+
+  final Set carrito = {'id', 'precio'};
 
   void _attemptAuthentication() async {
     final key = await storage.read(key: 'auth');
@@ -105,8 +108,13 @@ class _MyHomePageState extends State<MyHomePage> {
         .toList();
 
     return Scaffold(
-            appBar: AppBar(title: Text('Pagina de inicio')),
-            drawer: NavDrawer(),
+            // como poner todo este appbar en todas las paginas
+            // como hacer un carrito de compras
+            appBar: appbar(context, 'Pagina principal', {'icons': Icons.menu}),
+            drawer: Theme(
+                data: Theme.of(context)
+                    .copyWith(canvasColor: Colors.yellowAccent[50]),
+                child: NavDrawer()),
             body:
                 // SingleChildScrollView(
                 //     child: ConstrainedBox(
@@ -118,13 +126,14 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                   child: Container(
                       margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                      child: Text(
+                      child: Center(
+                          child: Text(
                         'Joyeria Luminosete',
                         style: TextStyle(
                           height: 2,
                           fontSize: 25,
                         ),
-                      ))),
+                      )))),
               Column(children: [
                 CarouselSlider(
                   items: imageSliders,
@@ -160,29 +169,44 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                   child: Container(
                       margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                      child: Text('El lujo no debe salir caro',
-                          style: TextStyle(
-                            height: 2,
-                            fontSize: 20,
-                          )))),
+                      child: Center(
+                          child: Text('El lujo no debe salir caro',
+                              style: TextStyle(
+                                height: 2,
+                                fontSize: 20,
+                              ))))),
               Divider(),
               Expanded(
                   child: Container(
                       margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                      child: Text('ANTECEDENTES DE LA ORGANIZACIÓN'))),
+                      child: Center(
+                          child: Text('ANTECEDENTES DE LA ORGANIZACIÓN')))),
               Divider(),
               Expanded(
                   child: Container(
                       margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                      child: Text(
-                          'Joyería Luminosité es una empresa orgullosamente mexicana , establecida en el año 2020 ubicada en Toluca con presencia en el centro de toluca, a un lado de la plaza de los mártires. Esta empresa fue creada por 3 estudiantes apasionados por el mundo de digital para facilitar la búsqueda de joyas al mejor precio, pero manteniendo la mejor calidad posible, a su disposición. Nos enfocamos en la venta de joyeria de segunda mano, no incluyendo los aspectos de distribución y entrega de los productos, directamente la empresa no proporciona estos servicios pero contando con terceros para la distribución.',
-                          style: TextStyle(
-                            height: 2,
-                            fontSize: 20,
-                          )))),
-              Container(child: Text('El lujo no debe salir caro')),
-              Container(child: Text('El lujo no debe salir caro')),
-              Container(child: Text('El lujo no debe salir caro')),
+                      child: Center(
+                          child: Text(
+                              'Joyería Luminosité es una empresa orgullosamente mexicana , establecida en el año 2020 ubicada en Toluca con presencia en el centro de toluca, a un lado de la plaza de los mártires. Esta empresa fue creada por 3 estudiantes apasionados por el mundo de digital para facilitar la búsqueda de joyas al mejor precio, pero manteniendo la mejor calidad posible, a su disposición. Nos enfocamos en la venta de joyeria de segunda mano, no incluyendo los aspectos de distribución y entrega de los productos, directamente la empresa no proporciona estos servicios pero contando con terceros para la distribución.',
+                              style: TextStyle(
+                                height: 2,
+                                fontSize: 20,
+                              ))))),
+              Expanded(
+                  child: Container(
+                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      child:
+                          Center(child: Text('El lujo no debe salir caro')))),
+              Expanded(
+                  child: Container(
+                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      child:
+                          Center(child: Text('El lujo no debe salir caro')))),
+              Expanded(
+                  child: Container(
+                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      child:
+                          Center(child: Text('El lujo no debe salir caro')))),
             ]))
         // ))
         ;

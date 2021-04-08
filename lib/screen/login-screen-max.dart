@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/providers/auth.dart';
 import 'package:provider/provider.dart';
-// import 'package:avatar_glow/avatar_glow.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/animation/delayed_animation.dart';
 
 class LoginScreenMX extends StatefulWidget {
@@ -46,7 +44,6 @@ class LoginStateMX extends State<LoginScreenMX>
 
   @override
   Widget build(BuildContext context) {
-    final color = Colors.white;
     _scale = 1 - _controller.value;
     return Scaffold(
         appBar: AppBar(

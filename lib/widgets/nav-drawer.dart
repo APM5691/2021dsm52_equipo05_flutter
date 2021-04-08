@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/providers/auth.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/No%20use/crear-usuario-screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/No%20use/formulario-usuario-screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/screen/catalogo_productos.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/direcciones_screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen-max.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen.dart';
@@ -20,15 +21,29 @@ class NavDrawer extends StatelessWidget {
         if (auth.authenticated) {
           return ListView(
             children: [
+              UserAccountsDrawerHeader(
+                accountName: Text(auth.user.name),
+                accountEmail: Text(auth.user.email),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.orange,
+                      Colors.white,
+                    ],
+                  ),
+                ),
+                currentAccountPicture: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://randomuser.me/api/portraits/men/46.jpg")),
+              ),
               ListTile(
-                tileColor: Colors.orange,
-                leading: Icon(Icons.account_circle_rounded),
-                title: Text(auth.user.name),
-                subtitle: Text(auth.user.primerApellido +
-                    ' ' +
-                    auth.user.segundoApellido +
-                    ' ' +
-                    auth.user.sexo),
+                title: Text("Catalogo de productos"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CatalogoProductosScreen()));
+                },
               ),
               ListTile(
                 title: Text("Posts"),
@@ -111,6 +126,7 @@ class NavDrawer extends StatelessWidget {
               ),
               ListTile(
                 title: Text("Direcciones"),
+                // leading: Icons.,
                 onTap: () {
                   Navigator.push(
                       context,
@@ -123,33 +139,6 @@ class NavDrawer extends StatelessWidget {
         } else {
           return ListView(
             children: [
-              Card(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    const ListTile(
-                      leading: Icon(Icons.account_circle_rounded),
-                      title: Text('hola'),
-                      subtitle: Text('hola'),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        TextButton(
-                          child: const Text('Iniciar sesion*'),
-                          onPressed: () {/* ... */},
-                        ),
-                        const SizedBox(width: 8),
-                        TextButton(
-                          child: const Text('Registarse*'),
-                          onPressed: () {/* ... */},
-                        ),
-                        const SizedBox(width: 8),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
               ListTile(
                 title: Text("Login"),
                 onTap: () {
