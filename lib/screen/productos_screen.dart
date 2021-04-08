@@ -13,11 +13,12 @@ class ProductosScreen extends StatefulWidget {
   }
 }
 
+// funciona al 100 por ciento
 class ProductosState extends State<ProductosScreen> {
   Future<List<Producto>> getProductos() async {
     Dio.Response response = await dio()
         .get('productos', options: Dio.Options(headers: {'auth': true}));
-    // print(response.data.toString());
+    print(response.data.toString());
     List posts = json.decode(response.toString())['data'];
     return posts.map((post) => Producto.fromJson(post)).toList();
   }
@@ -34,6 +35,7 @@ class ProductosState extends State<ProductosScreen> {
       ),
       body: Center(
         child: FutureBuilder<List<Producto>>(
+            // de producto a drirecciones
             future: getProductos(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
@@ -84,6 +86,9 @@ class ProductosState extends State<ProductosScreen> {
             },
           ),
         ),
+        // no mover
+        //
+
         onPressed: () {
           // print('agregar');
           Producto producto = Producto(

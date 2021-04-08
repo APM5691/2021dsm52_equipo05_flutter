@@ -93,6 +93,7 @@ class CatalogoProductosState extends State<CatalogoProductosScreen> {
                                       Expanded(
                                         child: Image.network(item.fotografia),
                                       ),
+                                      // ver por que no funciona
                                       Text(
                                         item.nombreProducto,
                                         textAlign: TextAlign.center,
@@ -127,14 +128,15 @@ class CatalogoProductosState extends State<CatalogoProductosScreen> {
                                                         .contains(item))
                                                     ? Icon(
                                                         Icons.shopping_cart,
-                                                        color: Colors.red,
+                                                        color: Colors.green,
                                                         size: 38,
                                                       )
                                                     : Icon(
                                                         Icons.shopping_cart,
-                                                        color: Colors.green,
+                                                        color: Colors.red,
                                                         size: 38,
                                                       ),
+                                                // preguntar al profe
                                                 onPressed: () {
                                                   setState(() {
                                                     if (_listaCarro

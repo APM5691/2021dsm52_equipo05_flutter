@@ -8,6 +8,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(create: (_) => Auth(), child: MyApp()));
+  // cambiar esta linea traspasar contenido de hmescreen desde login mx a main
 }
 
 class MyApp extends StatelessWidget {

@@ -37,6 +37,12 @@ class NavDrawer extends StatelessWidget {
                         "https://randomuser.me/api/portraits/men/46.jpg")),
               ),
               ListTile(
+                title: Text("Logout"),
+                onTap: () {
+                  Provider.of<Auth>(context, listen: false).logout();
+                },
+              ),
+              ListTile(
                 title: Text("Catalogo de productos"),
                 onTap: () {
                   Navigator.push(

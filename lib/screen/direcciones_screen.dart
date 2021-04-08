@@ -14,6 +14,8 @@ class DireccionesScreen extends StatefulWidget {
   }
 }
 
+// falta la pagina direccion y el funcionamiento del crud
+
 class DireccionesState extends State<DireccionesScreen> {
   Future<List<Direccion>> getDirecciones() async {
     Dio.Response response = await dio()
@@ -72,6 +74,8 @@ class DireccionesState extends State<DireccionesScreen> {
     );
   }
 
+  // cambiar el redireccionamiento para de productos a materiales
+
   Widget _agregaProducto() {
     return TextButton(
         style: ButtonStyle(
@@ -91,7 +95,7 @@ class DireccionesState extends State<DireccionesScreen> {
         ),
         onPressed: () {
           // print('agregar');
-          Producto producto = Producto();
+          Direccion producto = Producto();
 
           Navigator.push(
               context,

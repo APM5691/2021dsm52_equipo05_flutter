@@ -11,6 +11,8 @@ class LoginScreenMX extends StatefulWidget {
   }
 }
 
+// rediccrionar a esta pantalla desde homescreen
+
 class LoginStateMX extends State<LoginScreenMX>
     with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();

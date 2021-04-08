@@ -14,6 +14,8 @@ class VentasScreen extends StatefulWidget {
   }
 }
 
+// enlazar a user y a direccion crear el venta screen y el crud
+
 class VentasState extends State<VentasScreen> {
   Future<List<Venta>> getVentas() async {
     Dio.Response response = await dio()

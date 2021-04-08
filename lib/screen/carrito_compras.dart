@@ -121,12 +121,11 @@ class CarritoProductosState extends State<CarritoProductosScreen> {
                           children: <Widget>[
                             Row(
                               children: <Widget>[
-                                Container(
-                                  width: 150,
-                                  height: 150,
-                                  child: new Image.network(item.fotografia,
+                                Expanded(
+                                  child: Image.network(item.fotografia,
                                       fit: BoxFit.contain),
                                 ),
+                                // preguntar al profe
                                 Column(
                                   children: <Widget>[
                                     Text(item.nombreProducto,
@@ -186,6 +185,7 @@ class CarritoProductosState extends State<CarritoProductosScreen> {
                                                 color: Colors
                                                     .yellow, // print(_cart);
                                               ),
+                                              // redimensionar
                                               SizedBox(
                                                 height: 8.0,
                                               )
@@ -232,6 +232,7 @@ class CarritoProductosState extends State<CarritoProductosScreen> {
                   color: Colors.green,
                   child: Text("PAGAR"),
                   onPressed: () => {},
+                  // crear un atarjeta de credito falsa en flutter credito,
                   shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(30.0),
                   ),
