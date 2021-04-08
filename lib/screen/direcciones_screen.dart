@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' as Dio;
 import 'package:flutter_authentication_with_laravel_sanctum/models/direccion.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/screen/producto_screen.dart';
+
 import '../dio.dart';
-import '../models/producto.dart';
+
 
 class DireccionesScreen extends StatefulWidget {
   @override
@@ -31,8 +31,8 @@ class DireccionesState extends State<DireccionesScreen> {
       appBar: AppBar(
         title: Text('Direcciones'),
         actions: <Widget>[
-          _agregaProducto(),
-          _recargarProductos(),
+          _agregaDireccion(),
+          _recargarDireccion(),
         ],
       ),
       body: Center(
@@ -66,7 +66,7 @@ class DireccionesState extends State<DireccionesScreen> {
                     });
               } else if (snapshot.hasError) {
                 log(snapshot.error.toString());
-                return Text('Falló la carga de productos');
+                return Text('Falló la carga de Direcciones');
               }
               return CircularProgressIndicator();
             }),
@@ -76,7 +76,7 @@ class DireccionesState extends State<DireccionesScreen> {
 
   // cambiar el redireccionamiento para de productos a materiales
 
-  Widget _agregaProducto() {
+  Widget _agregaDireccion() {
     return TextButton(
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -95,17 +95,17 @@ class DireccionesState extends State<DireccionesScreen> {
         ),
         onPressed: () {
           // print('agregar');
-          Direccion producto = Producto();
+          Direccion direccion = Direccion();
 
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => ProductoScreen(producto: producto)));
+                  builder: (context) = DireccionScreen(direccion: direccion)));
         },
         child: Icon(Icons.add));
   }
 
-  Widget _recargarProductos() {
+  Widget _recargarDireccion() {
     return TextButton(
         style: ButtonStyle(
           foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
