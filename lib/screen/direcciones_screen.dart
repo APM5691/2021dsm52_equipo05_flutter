@@ -2,9 +2,11 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' as Dio;
-import 'package:flutter_authentication_with_laravel_sanctum/models/direccion.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/screen/direccion_screen.dart';
 
 import '../dio.dart';
+import '../models/direccion.dart';
+
 
 
 class DireccionesScreen extends StatefulWidget {
@@ -100,7 +102,7 @@ class DireccionesState extends State<DireccionesScreen> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) = DireccionScreen(direccion: direccion)));
+                  builder: (context) => DireccionScreen(direccion: direccion,)));
         },
         child: Icon(Icons.add));
   }
