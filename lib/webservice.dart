@@ -10,8 +10,8 @@ class Resource {
 
 class Webservice {
   static Future load(Resource resource) async {
-    var response = await http.get('http://10.0.2.2:8000/api/${resource.url}');
+    var response =
+        await http.get('http://192.168.0.19:8000/api/${resource.url}');
     return resource.parse(response);
   }
-
 }

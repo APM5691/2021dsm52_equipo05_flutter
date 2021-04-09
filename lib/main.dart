@@ -5,6 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 import 'providers/auth.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(create: (_) => Auth(), child: MyApp()));
@@ -128,13 +129,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                       margin: const EdgeInsets.only(left: 20.0, right: 20.0),
                       child: Center(
-                          child: Text(
-                        'Joyeria Luminosete',
-                        style: TextStyle(
-                          height: 2,
-                          fontSize: 25,
+                        child: Text(
+                          'Joyeria Luminosete',
+                          style: GoogleFonts.pacifico(
+                            textStyle: TextStyle(
+                                letterSpacing: .5,
+                                height: 2,
+                                fontSize: 32,
+                                fontStyle: FontStyle.italic),
+                          ),
                         ),
-                      )))),
+                      ))),
               Column(children: [
                 CarouselSlider(
                   items: imageSliders,
@@ -171,11 +176,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                       margin: const EdgeInsets.only(left: 20.0, right: 20.0),
                       child: Center(
-                          child: Text('El lujo no debe salir caro',
-                              style: TextStyle(
-                                height: 2,
-                                fontSize: 20,
-                              ))))),
+                          child: Text(
+                        'El lujo no debe salir caro',
+                        style: GoogleFonts.mcLaren(
+                            textStyle: TextStyle(
+                          fontSize: 15,
+                        )),
+                      )))),
               Divider(),
               Expanded(
                   child: Container(
@@ -190,24 +197,88 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Text(
                               'Joyería Luminosité es una empresa orgullosamente mexicana , establecida en el año 2020 ubicada en Toluca con presencia en el centro de toluca, a un lado de la plaza de los mártires. Esta empresa fue creada por 3 estudiantes apasionados por el mundo de digital para facilitar la búsqueda de joyas al mejor precio, pero manteniendo la mejor calidad posible, a su disposición. Nos enfocamos en la venta de joyeria de segunda mano, no incluyendo los aspectos de distribución y entrega de los productos, directamente la empresa no proporciona estos servicios pero contando con terceros para la distribución.',
                               style: TextStyle(
-                                height: 2,
-                                fontSize: 20,
+                                fontSize: 25,
+                                fontStyle: FontStyle.italic,
                               ))))),
               Expanded(
-                  child: Container(
-                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                      child:
-                          Center(child: Text('El lujo no debe salir caro')))),
+                child: Container(
+                  child: Card(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Expanded(
+                          child: Image.network(
+                              'https://i.pinimg.com/originals/f7/8e/ec/f78eec6b4e1c918d25229e885f5241f6.jpg'),
+                        ),
+                        Expanded(
+                            child: Container(
+                                margin: const EdgeInsets.only(
+                                    left: 20.0, right: 20.0),
+                                child: Center(
+                                    child: Text(
+                                        'MISIÓN DE LA ORGANIZACIÓN: \n\nOfrecer una amplia variedad de joyas con la mejor, calidad y valor, y brindar los mejores precios en el mercado.',
+                                        style: TextStyle(
+                                          fontStyle: FontStyle.italic,
+                                        ))))),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  child: Card(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Expanded(
+                          child: Image.network(
+                              'https://img2.freepng.es/20180619/yce/kisspng-airplane-paper-plane-drawing-kennedy-events-fondo-blanco-5b290933892789.7542554315294159875618.jpg'),
+                        ),
+                        Expanded(
+                            child: Container(
+                                margin: const EdgeInsets.only(
+                                    left: 20.0, right: 20.0),
+                                child: Center(
+                                    child: Text(
+                                        'VISIÓN DE LA ORGANIZACIÓN: \n\nCrecer como empresa líder en el mercado de de venta de joyas de segunda mano en línea,buscando la innovación en el sector, motivados por la pasión y compromiso para nuestra empresa y sus nuevos intereses.',
+                                        style: TextStyle(
+                                          fontStyle: FontStyle.italic,
+                                        ))))),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Center(
+                    child: Text(
+                  '\nENCUENTRANOS AQUÍ:',
+                  style:
+                      GoogleFonts.mcLaren(textStyle: TextStyle(fontSize: 20)),
+                )),
+              ),
               Expanded(
                   child: Container(
-                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                      child:
-                          Center(child: Text('El lujo no debe salir caro')))),
+                child: Text(
+                  'Si desea acudir a nuestro establecimiento para comprar o recibir tus productos, puede consultar la dirección en el siguiente enlace, por el bien de todos mantengamos las medidas de prevención de contagio, esperamos su visita.',
+                  style: GoogleFonts.lato(textStyle: TextStyle(fontSize: 18)),
+                ),
+              )),
               Expanded(
-                  child: Container(
-                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                      child:
-                          Center(child: Text('El lujo no debe salir caro')))),
+                child: new RaisedButton(
+                    color: Colors.red,
+                    textColor: Colors.white,
+                    child: Text(
+                      "Aquí",
+                      style: TextStyle(
+                        fontSize: 20.0,
+                      ),
+                    ),
+                    onPressed: () {
+// codigo del la acción a realizar
+                    }),
+              ),
             ]))
         // ))
         ;
