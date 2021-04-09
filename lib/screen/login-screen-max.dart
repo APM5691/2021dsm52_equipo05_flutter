@@ -32,7 +32,7 @@ class LoginStateMX extends State<LoginScreenMX>
   @override
   void initState() {
     _controller = AnimationController(
-      value: this,
+      vsync: this,
       duration: Duration(
         milliseconds: 200,
       ),

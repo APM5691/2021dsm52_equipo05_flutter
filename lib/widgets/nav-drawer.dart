@@ -19,18 +19,19 @@ class NavDrawer extends StatelessWidget {
     return Drawer(
       child: Consumer<Auth>(builder: (context, auth, child) {
         if (auth.authenticated) {
+          var linearGradient = LinearGradient(
+                    colors: [
+                      Colors.orange,
+                      Colors.white,
+                    ],
+                  );
           return ListView(
             children: [
               UserAccountsDrawerHeader(
                 accountName: Text(auth.user.name),
                 accountEmail: Text(auth.user.email),
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.orange,
-                      Colors.white,
-                    ],
-                  ),
+                  gradient: linearGradient,
                 ),
                 currentAccountPicture: CircleAvatar(
                     backgroundImage: NetworkImage(
