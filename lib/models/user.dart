@@ -3,6 +3,7 @@ import 'package:flutter_authentication_with_laravel_sanctum/webservice.dart';
 
 class User {
   int id;
+
   String name;
   String email;
   String primerApellido;

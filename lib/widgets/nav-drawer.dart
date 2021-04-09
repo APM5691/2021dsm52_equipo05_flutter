@@ -11,6 +11,7 @@ import 'package:flutter_authentication_with_laravel_sanctum/No%20use/posts-scree
 import 'package:flutter_authentication_with_laravel_sanctum/screen/materiales_screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/productos_screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/No%20use/usuarios-screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/screen/registrarse_screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/ventas_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -21,11 +22,11 @@ class NavDrawer extends StatelessWidget {
       child: Consumer<Auth>(builder: (context, auth, child) {
         if (auth.authenticated) {
           var linearGradient = LinearGradient(
-                    colors: [
-                      Colors.orange,
-                      Colors.white,
-                    ],
-                  );
+            colors: [
+              Colors.orange,
+              Colors.white,
+            ],
+          );
           return ListView(
             children: [
               UserAccountsDrawerHeader(
@@ -153,13 +154,17 @@ class NavDrawer extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
               ),
+
               ListTile(
                 title: Text("Registrarse"),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RegistrarseScreen()));
                 },
               ),
+
               // ListTile(
               //   title: Text("Posts"),
               //   onTap: () {
