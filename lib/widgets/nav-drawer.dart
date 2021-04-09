@@ -38,7 +38,7 @@ class NavDrawer extends StatelessWidget {
                         "https://randomuser.me/api/portraits/men/46.jpg")),
               ),
               ListTile(
-                title: Text("Logout"),
+                title: Text("Cerrar Sesion"),
                 onTap: () {
                   Provider.of<Auth>(context, listen: false).logout();
                 },
@@ -52,13 +52,13 @@ class NavDrawer extends StatelessWidget {
                           builder: (context) => CatalogoProductosScreen()));
                 },
               ),
-              ListTile(
-                title: Text("Posts"),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PostsScreen()));
-                },
-              ),
+              // ListTile(
+              //   title: Text("Posts"),
+              //   onTap: () {
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (context) => PostsScreen()));
+              //   },
+              // ),
               ListTile(
                 title: Text("Lista de usuarios"),
                 onTap: () {
@@ -69,12 +69,11 @@ class NavDrawer extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: Text("-----------------------------------------------"),
+                title: Text("Administradores"),
               ),
               ListTile(
                 title: Text("Lista de usuarios"),
                 onTap: () {
-                  print("Hola");
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -147,57 +146,56 @@ class NavDrawer extends StatelessWidget {
           return ListView(
             children: [
               ListTile(
-                title: Text("Login"),
+                title: Text("Iniciar Sesion"),
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
               ),
               ListTile(
-                title: Text("Register"),
+                title: Text("Registrarse"),
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LoginScreen()));
                 },
               ),
+              // ListTile(
+              //   title: Text("Posts"),
+              //   onTap: () {
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (context) => PostsScreen()));
+              //   },
+              // ),
               ListTile(
-                title: Text("Posts"),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PostsScreen()));
-                },
-              ),
-              ListTile(
-                title: Text("-----------------------------------------------"),
+                title: Text("Desactivar despues"),
               ),
               ListTile(
                 title: Text("Lista de usuarios"),
                 onTap: () {
-                  print("Hola");
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => UsuariosScreen()));
                 },
               ),
-              ListTile(
-                title: Text("Crear un nuevo usuario"),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CrearUsuarioScreen()));
-                },
-              ),
-              ListTile(
-                title: Text("Formulario"),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => FormularioUsuario()));
-                },
-              ),
+              // ListTile(
+              //   title: Text("Crear un nuevo usuario"),
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => CrearUsuarioScreen()));
+              //   },
+              // ),
+              // ListTile(
+              //   title: Text("Formulario"),
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => FormularioUsuario()));
+              //   },
+              // ),
               ListTile(
                 title: Text("Productos"),
                 onTap: () {
