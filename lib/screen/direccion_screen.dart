@@ -48,7 +48,7 @@ class _DireccionScreenState extends State<DireccionScreen> {
   }
 
   Widget _inputid() {
-   return TextFormField(
+    return TextFormField(
       keyboardType: TextInputType.number,
       initialValue: widget.direccion.id.toString(),
       decoration: InputDecoration(
@@ -65,7 +65,7 @@ class _DireccionScreenState extends State<DireccionScreen> {
   }
 
   Widget _inputclientesId() {
-   return TextFormField(
+    return TextFormField(
       keyboardType: TextInputType.number,
       initialValue: widget.direccion.clientesId.toString(),
       decoration: InputDecoration(
@@ -82,7 +82,7 @@ class _DireccionScreenState extends State<DireccionScreen> {
   }
 
   Widget _inputcalle() {
-      return TextFormField(
+    return TextFormField(
       initialValue: widget.direccion.calle,
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -92,7 +92,7 @@ class _DireccionScreenState extends State<DireccionScreen> {
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
       onChanged: (value) {
-         widget.direccion.calle = value;
+        widget.direccion.calle = value;
       },
     );
   }
@@ -147,7 +147,7 @@ class _DireccionScreenState extends State<DireccionScreen> {
   }
 
   Widget _inputestado() {
-     return TextFormField(
+    return TextFormField(
       initialValue: widget.direccion.estado,
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -161,6 +161,7 @@ class _DireccionScreenState extends State<DireccionScreen> {
       },
     );
   }
+
   Widget _boton() {
     return SizedBox(
       width: double.infinity,
@@ -174,7 +175,8 @@ class _DireccionScreenState extends State<DireccionScreen> {
       ),
     );
   }
-void _alerta(BuildContext context, String titulo, String mensaje) {
+
+  void _alerta(BuildContext context, String titulo, String mensaje) {
     showDialog(
         context: context,
         builder: (context) {
@@ -200,6 +202,7 @@ void _alerta(BuildContext context, String titulo, String mensaje) {
           );
         });
   }
+
   void _submit() async {
     if (0 >= widget.direccion.id) {
       //crear, no existe
@@ -216,7 +219,7 @@ void _alerta(BuildContext context, String titulo, String mensaje) {
       //actualizar
       print(widget.direccion.toJson());
       Dio.Response response = await dio().put(
-          'productos/' + widget.direccion.id.toString(),
+          'direcciones/' + widget.direccion.id.toString(),
           data: json.encode(widget.direccion.toJson()),
           options: Dio.Options(headers: {'auth': true}));
 

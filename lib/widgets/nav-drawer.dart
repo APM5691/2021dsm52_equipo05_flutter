@@ -8,6 +8,7 @@ import 'package:flutter_authentication_with_laravel_sanctum/screen/direcciones_s
 import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen-max.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/No%20use/posts-screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/screen/materiales_screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/productos_screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/No%20use/usuarios-screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/ventas_screen.dart';
@@ -128,7 +129,7 @@ class NavDrawer extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ProductosScreen()));
+                          builder: (context) => MaterialesScreen()));
                 },
               ),
               ListTile(
