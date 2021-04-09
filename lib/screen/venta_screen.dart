@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart' as Dio;
 import 'package:flutter/material.dart';
-
-
 import '../dio.dart';
 import '../models/venta.dart';
 
