@@ -9,6 +9,7 @@ class User {
   String primerApellido;
   String segundoApellido;
   String avatar;
+  String fotografia;
   String sexo;
   String edad;
 
@@ -18,6 +19,7 @@ class User {
       this.email,
       this.primerApellido,
       this.segundoApellido,
+      this.fotografia,
       this.avatar,
       this.sexo,
       this.edad});
@@ -30,13 +32,14 @@ class User {
       primerApellido: json['primer_apellido'],
       segundoApellido: json['segundo_apellido'],
       avatar: json['avatar'],
+      fotografia: json['fotografia'],
       sexo: json['sexo'],
       edad: json['edad'],
     );
   }
 
   String get fulldata {
-    return '${this.id} ${this.name} ${this.email} ${this.primerApellido} ${this.segundoApellido} ${this.avatar} ${this.edad}';
+    return '${this.id} ${this.name} ${this.email} ${this.fotografia} ${this.primerApellido} ${this.segundoApellido} ${this.avatar} ${this.edad}';
   }
 
   static Resource get me {

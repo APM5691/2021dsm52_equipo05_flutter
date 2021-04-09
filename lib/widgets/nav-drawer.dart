@@ -36,8 +36,7 @@ class NavDrawer extends StatelessWidget {
                   gradient: linearGradient,
                 ),
                 currentAccountPicture: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "https://randomuser.me/api/portraits/men/46.jpg")),
+                    backgroundImage: NetworkImage(auth.user.fotografia)),
               ),
               ListTile(
                 title: Text("Cerrar Sesion"),

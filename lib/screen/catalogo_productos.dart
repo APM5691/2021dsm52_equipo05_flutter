@@ -75,7 +75,6 @@ class CatalogoProductosState extends State<CatalogoProductosScreen> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return GridView.builder(
-                        padding: const EdgeInsets.all(4.0),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2),
                         itemCount: snapshot.data.length,
@@ -87,71 +86,13 @@ class CatalogoProductosState extends State<CatalogoProductosScreen> {
                                 fit: StackFit.loose,
                                 alignment: Alignment.center,
                                 children: <Widget>[
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Expanded(
-                                        child: Image.network(item.fotografia),
-                                      ),
-                                      // ver por que no funciona
-                                      Text(
-                                        item.nombreProducto,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: 20.0),
-                                      ),
-                                      SizedBox(
-                                        height: 15,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          SizedBox(
-                                            height: 25,
-                                          ),
-                                          Text(
-                                            item.precio.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 23.0,
-                                                color: Colors.black),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                              right: 8.0,
-                                              bottom: 8.0,
-                                            ),
-                                            child: Align(
-                                              alignment: Alignment.bottomRight,
-                                              child: IconButton(
-                                                icon: (!_listaCarro
-                                                        .contains(item))
-                                                    ? Icon(
-                                                        Icons.shopping_cart,
-                                                        color: Colors.green,
-                                                        size: 38,
-                                                      )
-                                                    : Icon(
-                                                        Icons.shopping_cart,
-                                                        color: Colors.red,
-                                                        size: 38,
-                                                      ),
-                                                // preguntar al profe
-                                                onPressed: () {
-                                                  setState(() {
-                                                    if (_listaCarro
-                                                        .contains(item))
-                                                      _listaCarro.remove(item);
-                                                    else
-                                                      _listaCarro.add(item);
-                                                  });
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      )
-                                    ],
+                                  ListTile(
+                                    title: Expanded(
+                                        child: Image.network(item.fotografia)),
+                                    subtitle: Expanded(
+                                        child: Text(item.precio.toString())),
+                                    leading: Expanded(
+                                        child: Text(item.nombreProducto)),
                                   )
                                 ],
                               ));

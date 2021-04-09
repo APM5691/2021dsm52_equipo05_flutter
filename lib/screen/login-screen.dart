@@ -23,6 +23,13 @@ class LoginState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool _obscureText = true;
+    void _toggle() {
+      setState(() {
+        _obscureText = !_obscureText;
+      });
+    }
+
     return Scaffold(
         appBar: AppBar(
           title: Text("Login"),
@@ -43,6 +50,7 @@ class LoginState extends State<LoginScreen> {
                   TextFormField(
                       initialValue: '123456789',
                       decoration: InputDecoration(labelText: "Password"),
+                      obscureText: _obscureText,
                       onSaved: (value) {
                         _password = value;
                       }),
