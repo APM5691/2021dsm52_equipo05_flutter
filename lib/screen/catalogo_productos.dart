@@ -15,7 +15,7 @@ class CatalogoProductosScreen extends StatefulWidget {
 }
 
 class CatalogoProductosState extends State<CatalogoProductosScreen> {
-  List<Producto> _listaCarro;
+  List<Producto> _listaCarro = List<Producto>();
   Future<List<Producto>> getCatalogoProductos() async {
     Dio.Response response = await dio()
         .get('productos', options: Dio.Options(headers: {'auth': true}));
@@ -75,6 +75,7 @@ class CatalogoProductosState extends State<CatalogoProductosScreen> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return GridView.builder(
+                        padding: const EdgeInsets.all(4.0),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2),
                         itemCount: snapshot.data.length,
@@ -86,13 +87,71 @@ class CatalogoProductosState extends State<CatalogoProductosScreen> {
                                 fit: StackFit.loose,
                                 alignment: Alignment.center,
                                 children: <Widget>[
-                                  ListTile(
-                                    title: Expanded(
-                                        child: Image.network(item.fotografia)),
-                                    subtitle: Expanded(
-                                        child: Text(item.precio.toString())),
-                                    leading: Expanded(
-                                        child: Text(item.nombreProducto)),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Expanded(
+                                        child: Image.network(item.fotografia),
+                                      ),
+                                      // ver por que no funciona
+                                      Text(
+                                        item.nombreProducto,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 20.0),
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: <Widget>[
+                                          SizedBox(
+                                            height: 25,
+                                          ),
+                                          Text(
+                                            item.precio.toString(),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 23.0,
+                                                color: Colors.black),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                              right: 8.0,
+                                              bottom: 8.0,
+                                            ),
+                                            child: Align(
+                                              alignment: Alignment.bottomRight,
+                                              child: IconButton(
+                                                icon: (!_listaCarro
+                                                        .contains(item))
+                                                    ? Icon(
+                                                        Icons.shopping_cart,
+                                                        color: Colors.green,
+                                                        size: 38,
+                                                      )
+                                                    : Icon(
+                                                        Icons.shopping_cart,
+                                                        color: Colors.red,
+                                                        size: 38,
+                                                      ),
+                                                // preguntar al profe
+                                                onPressed: () {
+                                                  setState(() {
+                                                    if (_listaCarro
+                                                        .contains(item))
+                                                      _listaCarro.remove(item);
+                                                    else
+                                                      _listaCarro.add(item);
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
                                   )
                                 ],
                               ));
@@ -101,65 +160,3 @@ class CatalogoProductosState extends State<CatalogoProductosScreen> {
                 })));
   }
 }
-
-//         padding: EdgeInsets.all(8.0),
-//         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-//             maxCrossAxisExtent: 200,
-//             crossAxisSpacing: 20,
-//             mainAxisSpacing: 20),
-//         itemCount: snapshot.data.length,
-//         itemBuilder: (context, index) {
-//           var item = snapshot.data[index];
-//           // return ListTile(title: Text(item.name));
-//           return Container(
-//               padding: EdgeInsets.all(5),
-//               decoration: BoxDecoration(
-//                   color: Colors.orange,
-//                   borderRadius: BorderRadius.circular(15)),
-//               child: Column(
-//                 children: <Widget>[
-//                   Expanded(
-//                       child: Container(
-//                           child: Column(children: <Widget>[
-//                     Expanded(child: Image.network(item.fotografia)),
-//                     Text(item.precio.toString()),
-//                     Text(item.nombreProducto),
-//                     ElevatedButton(
-//                       style: ButtonStyle(
-//                         backgroundColor:
-//                             MaterialStateProperty.all<Color>(
-//                                 Colors.red[200]),
-//                       ),
-//                       child: Text('Detalles'),
-//                       onPressed: () => {},
-//                     ),
-//                     ElevatedButton(
-//                         style: ButtonStyle(
-//                           backgroundColor:
-//                               MaterialStateProperty.all<Color>(
-//                                   Colors.red[700]),
-//                         ),
-//                         child:
-//                             Text('Agregar al carrito de compras'),
-//                         onPressed: () {
-//                           // log(widget.carrito.toString());
-//                           // widget.carrito.add(item.id.toString());
-//                           // widget.carrito.add(item.precioOferta),
-//                           // widget.carrito.add(item.fotografia),
-//                           // MaterialPageRoute(
-//                           //     builder: (context) =>
-//                           //         CarritoProductosScreen(
-//                           //           carrito: widget.carrito,
-//                           //         ));
-//                           log('añadido al carrito');
-//                         })
-//                   ])))
-//                 ],
-//               ));
-//         });
-//   } else if (snapshot.hasError) {
-//     log(snapshot.error.toString());
-//     return Text('Falló la carga de productos');
-//   }
-//   return CircularProgressIndicator();
-// }),
