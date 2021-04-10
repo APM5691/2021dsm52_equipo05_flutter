@@ -11,7 +11,19 @@ class RegistrarseScreen extends StatefulWidget {
 }
 
 class _RegistrarseScreenState extends State {
-  User user;
+  User user = User(
+      id: 0,
+      name: "",
+      email: "",
+      primerApellido: "",
+      segundoApellido: "",
+      fotografia: "",
+      sexo: "",
+      fechaNacimiento: '',
+      perfil: '',
+      estatus: '',
+      password: '');
+
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -29,13 +41,19 @@ class _RegistrarseScreenState extends State {
               Divider(),
               _inputsegundoapellido(),
               Divider(),
-              _inputavatar(),
-              Divider(),
               _inputsexo(),
               Divider(),
-              _inputedad(),
-              Divider(),
               _inputemail(),
+              Divider(),
+              _inputfechaNacimiento(),
+              Divider(),
+              _inputperfil(),
+              Divider(),
+              _inputestatus(),
+              Divider(),
+              _inputfotografia(),
+              Divider(),
+              _inputpassword(),
               Divider(),
               _boton()
             ],
@@ -59,8 +77,6 @@ class _RegistrarseScreenState extends State {
     );
   }
 
- 
-
   Widget _inputsexo() {
     return TextFormField(
       decoration: InputDecoration(
@@ -76,21 +92,7 @@ class _RegistrarseScreenState extends State {
     );
   }
 
-  Widget _inputedad() {
-    return TextFormField(
-      keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'Edad:',
-          labelText: 'Edad:',
-          helperText: 'Edad:',
-          suffixIcon: Icon(Icons.keyboard),
-          icon: Icon(Icons.keyboard)),
-      onChanged: (value) {
-        user.edad = value;
-      },
-    );
-  } Widget _inputemail() {
+  Widget _inputemail() {
     return TextFormField(
       // autofocus: true,
       decoration: InputDecoration(
@@ -107,7 +109,7 @@ class _RegistrarseScreenState extends State {
   }
 
   Widget _inputprimerapellido() {
-     return TextFormField(
+    return TextFormField(
       // autofocus: true,
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -138,8 +140,52 @@ class _RegistrarseScreenState extends State {
     );
   }
 
+  Widget _inputfechaNacimiento() {
+    return TextFormField(
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          hintText: 'Fecha de Nacimiento ',
+          labelText: 'Fecha de Nacimiento ',
+          helperText: 'Fecha de Nacimiento ',
+          suffixIcon: Icon(Icons.keyboard),
+          icon: Icon(Icons.keyboard)),
+      onChanged: (value) {
+        user.fechaNacimiento = value;
+      },
+    );
+  }
 
-  Widget _inputavatar() {
+  Widget _inputperfil() {
+    return TextFormField(
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          hintText: 'Perfil',
+          labelText: 'Perfil',
+          helperText: 'Perfil',
+          suffixIcon: Icon(Icons.keyboard),
+          icon: Icon(Icons.keyboard)),
+      onChanged: (value) {
+        user.perfil = value;
+      },
+    );
+  }
+
+  Widget _inputestatus() {
+    return TextFormField(
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          hintText: 'Status',
+          labelText: 'Status',
+          helperText: 'Status',
+          suffixIcon: Icon(Icons.keyboard),
+          icon: Icon(Icons.keyboard)),
+      onChanged: (value) {
+        user.estatus = value;
+      },
+    );
+  }
+
+  Widget _inputfotografia() {
     return TextFormField(
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -149,7 +195,22 @@ class _RegistrarseScreenState extends State {
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
       onChanged: (value) {
-        user.avatar = value;
+        user.fotografia = value;
+      },
+    );
+  }
+
+  Widget _inputpassword() {
+    return TextFormField(
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          hintText: 'password',
+          labelText: 'password',
+          helperText: 'password',
+          suffixIcon: Icon(Icons.keyboard),
+          icon: Icon(Icons.keyboard)),
+      onChanged: (value) {
+        user.password = value;
       },
     );
   }
@@ -196,10 +257,10 @@ class _RegistrarseScreenState extends State {
   }
 
   void _submit() async {
-    print(user);
+    print(user.toJson());
 
-    Dio.Response response =
-        await dio().post('usuarios', data: json.encode(user));
+    Dio.Response response = await dio().post('usuarios',
+        data: json.encode(user), options: Dio.Options(headers: {'auth': true}));
 
     if (201 == response.statusCode) {
       _alerta(context, 'Usuario', 'Usuario creado');

@@ -3,15 +3,17 @@ import 'package:flutter_authentication_with_laravel_sanctum/webservice.dart';
 
 class User {
   int id;
-
   String name;
   String email;
   String primerApellido;
   String segundoApellido;
-  String avatar;
   String fotografia;
   String sexo;
-  String edad;
+
+  String fechaNacimiento;
+  String perfil;
+  String estatus;
+  String password;
 
   User(
       {this.id,
@@ -20,9 +22,11 @@ class User {
       this.primerApellido,
       this.segundoApellido,
       this.fotografia,
-      this.avatar,
       this.sexo,
-      this.edad});
+      this.fechaNacimiento,
+      this.perfil,
+      this.estatus,
+      this.password});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
@@ -31,15 +35,31 @@ class User {
       email: json['email'],
       primerApellido: json['primer_apellido'],
       segundoApellido: json['segundo_apellido'],
-      avatar: json['avatar'],
       fotografia: json['fotografia'],
       sexo: json['sexo'],
-      edad: json['edad'],
+      fechaNacimiento: json['fecha_nacimiento'],
+      perfil: json['perfil'],
+      estatus: json['estatus'],
+      password: json['password'],
     );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      "name": name,
+      "email": email,
+      "primer_apellido": primerApellido,
+      "segundo_apellido": segundoApellido,
+      "fotografia": fotografia,
+      "sexo": sexo,
+      "fecha_nacimiento": fechaNacimiento,
+      "perfil": perfil,
+      "estatus": estatus,
+      "password": password,
+    };
   }
 
   String get fulldata {
-    return '${this.id} ${this.name} ${this.email} ${this.fotografia} ${this.primerApellido} ${this.segundoApellido} ${this.avatar} ${this.edad}';
+    return '${this.id} ${this.name} ${this.email} ${this.fotografia} ${this.primerApellido} ${this.segundoApellido} ';
   }
 
   static Resource get me {
