@@ -56,7 +56,7 @@ class LoginState extends State<LoginScreen> {
                       }),
                   SizedBox(
                     width: double.infinity,
-                    child: FlatButton(
+                    child: TextButton(
                       child: Text("login"),
                       onPressed: () {
                         _formKey.currentState.save();

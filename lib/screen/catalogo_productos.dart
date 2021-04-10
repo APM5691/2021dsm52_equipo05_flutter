@@ -15,7 +15,7 @@ class CatalogoProductosScreen extends StatefulWidget {
 }
 
 class CatalogoProductosState extends State<CatalogoProductosScreen> {
-  List<Producto> _listaCarro = List<Producto>();
+  List<Producto> _listaCarro;
   Future<List<Producto>> getCatalogoProductos() async {
     Dio.Response response = await dio()
         .get('productos', options: Dio.Options(headers: {'auth': true}));

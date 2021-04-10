@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/providers/auth.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/No%20use/crear-usuario-screen.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/No%20use/formulario-usuario-screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/catalogo_productos.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/direcciones_screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen-max.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/No%20use/posts-screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/materiales_screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/productos_screen.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/No%20use/usuarios-screen.dart';

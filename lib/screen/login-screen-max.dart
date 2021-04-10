@@ -15,7 +15,7 @@ class LoginScreenMX extends StatefulWidget {
 
 class LoginStateMX extends State<LoginScreenMX>
     with SingleTickerProviderStateMixin {
-  final _formKey = GlobalKey<FormState>();
+      
   String _email;
   String _password;
 
