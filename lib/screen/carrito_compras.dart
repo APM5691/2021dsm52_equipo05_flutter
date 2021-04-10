@@ -18,8 +18,6 @@ class CarritoProductosState extends State<CarritoProductosScreen> {
   final _scrollController = ScrollController();
   var _firstScroll = true;
   bool _enabled = false;
-  int creditoActual =2000;
-  bool aprobar = false;
 
   Container pagoTotal(List<Producto> _cart) {
     return Container(
@@ -50,16 +48,21 @@ class CarritoProductosState extends State<CarritoProductosScreen> {
     }
     return total.toStringAsFixed(2);
   }
-    
-String tarjeta(creditoActual,aprobar,valortotal) {
-  if(valortotal>=creditoActual){return "Pago realizado con excito";}
-valortotal=valortotal-creditoActual;  
-if(valortotal <creditoActual){return "No tienes el credito suficiente";}
 
-  if(creditoActual <= 0){return "Error no se puede procesar el pago";}
+  String tarjeta(valortotal) {
+    int creditoActual = 2000;
+    if (valortotal >= creditoActual) {
+      return "Pago realizado con excito";
+    }
+    valortotal = valortotal - creditoActual;
+    if (valortotal < creditoActual) {
+      return "No tienes el credito suficiente";
+    }
 
-
-}
+    if (creditoActual <= 0) {
+      return "Error no se puede procesar el pago";
+    }
+  }
 
   _addProduct(int index) {
     setState(() {
@@ -121,7 +124,6 @@ if(valortotal <creditoActual){return "No tienes el credito suficiente";}
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: _cart.length,
                 itemBuilder: (context, index) {
-
                   var item = _cart[index];
                   //item.quantity = 0;
                   return Column(
@@ -239,20 +241,12 @@ if(valortotal <creditoActual){return "No tienes el credito suficiente";}
                 height: 100,
                 width: 200,
                 padding: EdgeInsets.only(top: 50),
-                child:ElevatedButton(
+                child: ElevatedButton(
                   child: Text("PAGAR"),
-                  onPressed: () => 
-                  {
-tarjeta(creditoActual, aprobar,valorTotal(_cart))
-
-
-                  },
+                  onPressed: () => {tarjeta(valorTotal(_cart))},
                   // crear un atarjeta de credito falsa en flutter credito,
- 
-
-                  ),
                 ),
-
+              ),
             ],
           ))),
     );
