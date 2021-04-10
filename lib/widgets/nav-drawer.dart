@@ -57,18 +57,18 @@ class NavDrawer extends StatelessWidget {
               //         MaterialPageRoute(builder: (context) => PostsScreen()));
               //   },
               // ),
-              ListTile(
-                title: Text("Lista de usuarios"),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UsuariosScreen()));
-                },
-              ),
-              ListTile(
-                title: Text("Administradores"),
-              ),
+              // ListTile(
+              //   title: Text("Lista de usuarios"),
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => UsuariosScreen()));
+              //   },
+              // ),
+              // ListTile(
+              //   title: Text("Administradores"),
+              // ),
               ListTile(
                 title: Text("Lista de usuarios"),
                 onTap: () {
@@ -96,13 +96,13 @@ class NavDrawer extends StatelessWidget {
               //             builder: (context) => FormularioUsuario()));
               //   },
               // ),
-              ListTile(
-                title: Text("LoginMX"),
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreenMX()));
-                },
-              ),
+              // ListTile(
+              //   title: Text("LoginMX"),
+              //   onTap: () {
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (context) => LoginScreenMX()));
+              //   },
+              // ),
               ListTile(
                 title: Text("Productos"),
                 onTap: () {
@@ -168,18 +168,18 @@ class NavDrawer extends StatelessWidget {
               //         MaterialPageRoute(builder: (context) => PostsScreen()));
               //   },
               // ),
-              ListTile(
-                title: Text("Desactivar despues"),
-              ),
-              ListTile(
-                title: Text("Lista de usuarios"),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => UsuariosScreen()));
-                },
-              ),
+              // ListTile(
+              //   title: Text("Desactivar despues"),
+              // ),
+              // ListTile(
+              //   title: Text("Lista de usuarios"),
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => UsuariosScreen()));
+              //   },
+              // ),
               // ListTile(
               //   title: Text("Crear un nuevo usuario"),
               //   onTap: () {
@@ -198,15 +198,15 @@ class NavDrawer extends StatelessWidget {
               //             builder: (context) => FormularioUsuario()));
               //   },
               // ),
-              ListTile(
-                title: Text("Productos"),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProductosScreen()));
-                },
-              ),
+              // ListTile(
+              //   title: Text("Productos"),
+              //   onTap: () {
+              //     Navigator.push(
+              //         context,
+              //         MaterialPageRoute(
+              //             builder: (context) => ProductosScreen()));
+              //   },
+              // ),
             ],
           );
         }
