@@ -94,7 +94,15 @@ class DireccionesState extends State<DireccionesScreen> {
         ),
         onPressed: () {
           // print('agregar');
-          Direccion direccion = Direccion();
+          Direccion direccion = Direccion(
+            id: 0,
+            clientesId: 0,
+            calle: '',
+            numero: 0,
+            localidad: '',
+            municipio: '',
+            estado: '',
+          );
 
           Navigator.push(
               context,

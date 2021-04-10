@@ -266,9 +266,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )),
               Expanded(
-                child: new RaisedButton(
-                    color: Colors.red,
-                    textColor: Colors.white,
+                child: new ElevatedButton(
                     child: Text(
                       "Aquí",
                       style: TextStyle(
