@@ -24,6 +24,19 @@ class CatalogoProductosState extends State<CatalogoProductosScreen> {
     return posts.map((post) => Producto.fromJson(post)).toList();
   }
 
+  List<bool> addFavorite = List<bool>();
+
+  Icon firstIcon = Icon(
+    Icons.shopping_cart,
+    color: Colors.green,
+    size: 38,
+  );
+  Icon secondIcon = Icon(
+    Icons.shopping_cart,
+    color: Colors.red,
+    size: 38,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,6 +93,7 @@ class CatalogoProductosState extends State<CatalogoProductosScreen> {
                             crossAxisCount: 2),
                         itemCount: snapshot.data.length,
                         itemBuilder: (context, index) {
+                          addFavorite.add(false);
                           var item = snapshot.data[index];
                           return Card(
                               elevation: 4.0,
@@ -124,29 +138,27 @@ class CatalogoProductosState extends State<CatalogoProductosScreen> {
                                             child: Align(
                                               alignment: Alignment.bottomRight,
                                               child: IconButton(
-                                                icon: (!_listaCarro
-                                                        .contains(item))
-                                                    ? Icon(
-                                                        Icons.shopping_cart,
-                                                        color: Colors.green,
-                                                        size: 38,
-                                                      )
-                                                    : Icon(
-                                                        Icons.shopping_cart,
-                                                        color: Colors.red,
-                                                        size: 38,
-                                                      ),
-                                                // preguntar al profe
-                                                onPressed: () {
-                                                  setState(() {
-                                                    if (_listaCarro
-                                                        .contains(item))
-                                                      _listaCarro.remove(item);
-                                                    else
-                                                      _listaCarro.add(item);
-                                                  });
-                                                },
-                                              ),
+                                                  icon: Icon(addFavorite
+                                                          .elementAt(index)
+                                                      ? Icons.favorite
+                                                      : Icons.favorite_border),
+                                                  onPressed: () {
+                                                    // Setting the state
+                                                    setState(() {
+                                                      // Changing icon of specific index
+                                                      addFavorite[index] =
+                                                          addFavorite[index] ==
+                                                                  false
+                                                              ? true
+                                                              : false;
+                                                      if (_listaCarro
+                                                          .contains(item))
+                                                        _listaCarro
+                                                            .remove(item);
+                                                      else
+                                                        _listaCarro.add(item);
+                                                    });
+                                                  }),
                                             ),
                                           ),
                                         ],
