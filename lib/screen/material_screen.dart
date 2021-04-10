@@ -39,7 +39,7 @@ class _MaterialScreenState extends State<MaterialScreen> {
 
   Widget _inputnombre() {
     return TextFormField(
-      initialValue: widget.material.tipo_material,
+      initialValue: widget.material.nombre,
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
           hintText: 'Nombre',
