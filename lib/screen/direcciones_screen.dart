@@ -7,8 +7,6 @@ import 'package:flutter_authentication_with_laravel_sanctum/screen/direccion_scr
 import '../dio.dart';
 import '../models/direccion.dart';
 
-
-
 class DireccionesScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -57,12 +55,11 @@ class DireccionesState extends State<DireccionesScreen> {
                             item.estado),
                         trailing: Icon(Icons.edit),
                         onTap: () {
-                          // log('Agregar al carrito: ' + item.id.toString());
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) =>
-                          //             ProductoScreen(producto: item)));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      DireccionScreen(direccion: item)));
                         },
                       );
                     });
@@ -102,7 +99,9 @@ class DireccionesState extends State<DireccionesScreen> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => DireccionScreen(direccion: direccion,)));
+                  builder: (context) => DireccionScreen(
+                        direccion: direccion,
+                      )));
         },
         child: Icon(Icons.add));
   }

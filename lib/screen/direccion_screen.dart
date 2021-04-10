@@ -27,8 +27,8 @@ class _DireccionScreenState extends State<DireccionScreen> {
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             children: <Widget>[
-              _inputid(),
-              Divider(),
+              /*_inputid(),
+              Divider(),*/
               _inputclientesId(),
               Divider(),
               _inputcalle(),
@@ -47,7 +47,7 @@ class _DireccionScreenState extends State<DireccionScreen> {
     );
   }
 
-  Widget _inputid() {
+  /*Widget _inputid() {
     return TextFormField(
       keyboardType: TextInputType.number,
       initialValue: widget.direccion.id.toString(),
@@ -62,7 +62,7 @@ class _DireccionScreenState extends State<DireccionScreen> {
         widget.direccion.id = int.parse(value);
       },
     );
-  }
+  }*/
 
   Widget _inputclientesId() {
     return TextFormField(
@@ -103,9 +103,9 @@ class _DireccionScreenState extends State<DireccionScreen> {
       initialValue: widget.direccion.numero.toString(),
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'Precio',
-          labelText: 'Precio',
-          helperText: 'Precio',
+          hintText: 'Número',
+          labelText: 'Número',
+          helperText: 'Número',
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
       onChanged: (value) {

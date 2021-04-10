@@ -27,8 +27,8 @@ class _MaterialScreenState extends State<MaterialScreen> {
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             children: <Widget>[
-              _inputid(),
-              Divider(),
+              //_inputid(),
+              //Divider(),
               _inputnombre(),
               Divider(),
               _input_tipo_material(),
@@ -47,7 +47,7 @@ class _MaterialScreenState extends State<MaterialScreen> {
     );
   }
 
-  Widget _inputid() {
+  /*Widget _inputid() {
     return TextFormField(
       keyboardType: TextInputType.number,
       initialValue: widget.material.id.toString(),
@@ -62,7 +62,7 @@ class _MaterialScreenState extends State<MaterialScreen> {
         widget.material.id = int.parse(value);
       },
     );
-  }
+  }*/
 
   Widget _inputnombre() {
     return TextFormField(

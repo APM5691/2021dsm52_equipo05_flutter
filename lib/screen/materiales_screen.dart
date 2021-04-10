@@ -50,18 +50,17 @@ class MaterialesState extends State<MaterialesScreen> {
                         subtitle: Text(item.tipo_material),
                         trailing: Icon(Icons.edit),
                         onTap: () {
-                          // log('Agregar al carrito: ' + item.id.toString());
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) =>
-                          //             ProductoScreen(producto: item)));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      MaterialScreen(material: item)));
                         },
                       );
                     });
               } else if (snapshot.hasError) {
                 log(snapshot.error.toString());
-                return Text('Falló la carga de Direcciones');
+                return Text('Falló la carga de Materiales');
               }
               return CircularProgressIndicator();
             }),
