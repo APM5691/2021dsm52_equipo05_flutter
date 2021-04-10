@@ -89,7 +89,7 @@ class MaterialesState extends State<MaterialesScreen> {
         ),
         onPressed: () {
           // print('agregar');
-          Material1 material = Material1();
+          Material1 material = Material1(id: 0, nombre: '');
 
           Navigator.push(
               context,

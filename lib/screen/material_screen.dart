@@ -27,42 +27,15 @@ class _MaterialScreenState extends State<MaterialScreen> {
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             children: <Widget>[
-              //_inputid(),
-              //Divider(),
               _inputnombre(),
               Divider(),
-              _input_tipo_material(),
+              _inputTipoMaterial(),
               Divider(),
-              /*_inputnumero(),
-              Divider(),
-              _inputlocalidad(),
-              Divider(),
-              _inputmunicipio(),
-              Divider(),
-              _inputestado(),
-              Divider(),*/
               _boton()
             ],
           )),
     );
   }
-
-  /*Widget _inputid() {
-    return TextFormField(
-      keyboardType: TextInputType.number,
-      initialValue: widget.material.id.toString(),
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'id',
-          labelText: 'id',
-          helperText: 'id',
-          suffixIcon: Icon(Icons.keyboard),
-          icon: Icon(Icons.keyboard)),
-      onChanged: (value) {
-        widget.material.id = int.parse(value);
-      },
-    );
-  }*/
 
   Widget _inputnombre() {
     return TextFormField(
@@ -75,12 +48,12 @@ class _MaterialScreenState extends State<MaterialScreen> {
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
       onChanged: (value) {
-        widget.material.tipo_material = value;
+        widget.material.nombre = value;
       },
     );
   }
 
-  Widget _input_tipo_material() {
+  Widget _inputTipoMaterial() {
     return TextFormField(
       initialValue: widget.material.tipo_material,
       decoration: InputDecoration(
@@ -95,71 +68,6 @@ class _MaterialScreenState extends State<MaterialScreen> {
       },
     );
   }
-/*
-  Widget _inputnumero() {
-    return TextFormField(
-      keyboardType: TextInputType.number,
-      initialValue: widget.direccion.numero.toString(),
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'Precio',
-          labelText: 'Precio',
-          helperText: 'Precio',
-          suffixIcon: Icon(Icons.keyboard),
-          icon: Icon(Icons.keyboard)),
-      onChanged: (value) {
-        widget.direccion.numero = int.parse(value);
-      },
-    );
-  }
-
-  Widget _inputlocalidad() {
-    return TextFormField(
-      initialValue: widget.direccion.localidad,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'Localidad',
-          labelText: 'Localidad',
-          helperText: 'Localidad',
-          suffixIcon: Icon(Icons.keyboard),
-          icon: Icon(Icons.keyboard)),
-      onChanged: (value) {
-        widget.direccion.localidad = value;
-      },
-    );
-  }
-
-  Widget _inputmunicipio() {
-    return TextFormField(
-      initialValue: widget.direccion.municipio,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'Municipio',
-          labelText: 'Municipio',
-          helperText: 'Municipio',
-          suffixIcon: Icon(Icons.keyboard),
-          icon: Icon(Icons.keyboard)),
-      onChanged: (value) {
-        widget.direccion.municipio = value;
-      },
-    );
-  }
-
-  Widget _inputestado() {
-    return TextFormField(
-      initialValue: widget.direccion.estado,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'Estado',
-          labelText: 'Estado',
-          helperText: 'Estado',
-          suffixIcon: Icon(Icons.keyboard),
-          icon: Icon(Icons.keyboard)),
-      onChanged: (value) {
-        widget.direccion.estado = value;
-      },
-    );
-  }*/
 
   Widget _boton() {
     return SizedBox(
@@ -212,7 +120,7 @@ class _MaterialScreenState extends State<MaterialScreen> {
           options: Dio.Options(headers: {'auth': true}));
 
       if (201 == response.statusCode) {
-        _alerta(context, 'MaterialJ', 'Material creado');
+        _alerta(context, 'Material', 'Material creado');
       }
     } else {
       //actualizar
@@ -223,7 +131,7 @@ class _MaterialScreenState extends State<MaterialScreen> {
           options: Dio.Options(headers: {'auth': true}));
 
       if (200 == response.statusCode) {
-        _alerta(context, 'MaterialJ', 'Materiales actualizados');
+        _alerta(context, 'Material', 'Materiales actualizados');
       }
     }
 

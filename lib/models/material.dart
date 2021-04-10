@@ -17,10 +17,6 @@ class Material1 {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      "id": id,
-      "nombre": nombre,
-      "tipo_material": tipo_material,
-    };
+    return {"id": id, "nombre": nombre, "tipo_material": tipo_material};
   }
 }
