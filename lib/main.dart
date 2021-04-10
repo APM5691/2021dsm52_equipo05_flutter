@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/screen/login-screen-max.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/widgets/app-bar.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/widgets/nav-drawer.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -8,7 +9,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(create: (_) => Auth(), child: MyApp()));
+  runApp(ChangeNotifierProvider(create: (_) => Auth(), child: LoginScreenMX()));
   // cambiar esta linea traspasar contenido de hmescreen desde login mx a main
 }
 
