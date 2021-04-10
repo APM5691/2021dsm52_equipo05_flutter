@@ -25,8 +25,6 @@ class _RegistrarseScreenState extends State {
             children: <Widget>[
               _inputname(),
               Divider(),
-              _inputemail(),
-              Divider(),
               _inputprimerapellido(),
               Divider(),
               _inputsegundoapellido(),
@@ -36,6 +34,8 @@ class _RegistrarseScreenState extends State {
               _inputsexo(),
               Divider(),
               _inputedad(),
+              Divider(),
+              _inputemail(),
               Divider(),
               _boton()
             ],
@@ -59,7 +59,38 @@ class _RegistrarseScreenState extends State {
     );
   }
 
-  Widget _inputemail() {
+ 
+
+  Widget _inputsexo() {
+    return TextFormField(
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          hintText: 'Sexo:',
+          labelText: 'Sexo:',
+          helperText: 'Sexo:',
+          suffixIcon: Icon(Icons.keyboard),
+          icon: Icon(Icons.keyboard)),
+      onChanged: (value) {
+        user.sexo = value;
+      },
+    );
+  }
+
+  Widget _inputedad() {
+    return TextFormField(
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          hintText: 'Edad:',
+          labelText: 'Edad:',
+          helperText: 'Edad:',
+          suffixIcon: Icon(Icons.keyboard),
+          icon: Icon(Icons.keyboard)),
+      onChanged: (value) {
+        user.edad = value;
+      },
+    );
+  } Widget _inputemail() {
     return TextFormField(
       // autofocus: true,
       decoration: InputDecoration(
@@ -119,37 +150,6 @@ class _RegistrarseScreenState extends State {
           icon: Icon(Icons.keyboard)),
       onChanged: (value) {
         user.avatar = value;
-      },
-    );
-  }
-
-  Widget _inputsexo() {
-    return TextFormField(
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'Sexo:',
-          labelText: 'Sexo:',
-          helperText: 'Sexo:',
-          suffixIcon: Icon(Icons.keyboard),
-          icon: Icon(Icons.keyboard)),
-      onChanged: (value) {
-        user.sexo = value;
-      },
-    );
-  }
-
-  Widget _inputedad() {
-    return TextFormField(
-      keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'Edad:',
-          labelText: 'Edad:',
-          helperText: 'Edad:',
-          suffixIcon: Icon(Icons.keyboard),
-          icon: Icon(Icons.keyboard)),
-      onChanged: (value) {
-        user.edad = value;
       },
     );
   }

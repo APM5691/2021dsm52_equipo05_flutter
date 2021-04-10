@@ -47,7 +47,7 @@ class MaterialesState extends State<MaterialesScreen> {
                       // return ListTile(title: Text(item.name));
                       return ListTile(
                         title: Text(item.nombre),
-                        subtitle: Text(item.tipo_material),
+                        subtitle: Text(item.tipoMaterial),
                         trailing: Icon(Icons.edit),
                         onTap: () {
                           Navigator.push(

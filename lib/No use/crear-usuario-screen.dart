@@ -68,7 +68,7 @@ class CrearUsuarioState extends State<CrearUsuarioScreen> {
                       }),
                   SizedBox(
                     width: double.infinity,
-                    child: FlatButton(
+                    child: ElevatedButton(
                       child: Text("Crear un nuevo usuario"),
                       onPressed: () {
                         _formKey.currentState.save();

@@ -55,7 +55,7 @@ class _MaterialScreenState extends State<MaterialScreen> {
 
   Widget _inputTipoMaterial() {
     return TextFormField(
-      initialValue: widget.material.tipo_material,
+      initialValue: widget.material.tipoMaterial,
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
           hintText: 'Tipo material',
@@ -64,7 +64,7 @@ class _MaterialScreenState extends State<MaterialScreen> {
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
       onChanged: (value) {
-        widget.material.tipo_material = value;
+        widget.material.tipoMaterial = value;
       },
     );
   }
