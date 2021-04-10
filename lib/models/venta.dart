@@ -10,7 +10,7 @@ class Venta {
     return Venta(
       id: json['id'],
       montoTotal: json['monto_total'],
-      direccionesId: json['direccione_iId'],
+      direccionesId: json['direcciones_id'],
       clientesId: json['clientes_id'],
     );
   }
@@ -18,14 +18,9 @@ class Venta {
   Map<String, dynamic> toJson() {
     return {
       "id": id,
-      "montoTotal": montoTotal,
-      "direccionesId": direccionesId,
-      "clientesId": clientesId,
+      "monto_total": montoTotal,
+      "direcciones_id": direccionesId,
+      "clientes_id": clientesId,
     };
   }
-
-  // @override
-  // String toString() {
-  //   return 'Producto{id: $id, tipoDeJoyaId: $tipoDeJoyaId, clave: $clave, nombreProducto: $nombreProducto, numeroExistencias: $numeroExistencias, precio: $precio, descripcion: $descripcion, medida: $medida, precioOferta: $precioOferta, fotografia: $fotografia}';
-  // }
 }

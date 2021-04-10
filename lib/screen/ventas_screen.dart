@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' as Dio;
 import 'package:flutter_authentication_with_laravel_sanctum/models/venta.dart';
 import 'package:flutter_authentication_with_laravel_sanctum/screen/producto_screen.dart';
+import 'package:flutter_authentication_with_laravel_sanctum/screen/venta_screen.dart';
 import '../dio.dart';
 import '../models/producto.dart';
 
@@ -49,18 +50,17 @@ class VentasState extends State<VentasScreen> {
                         title: Text(item.montoTotal.toString()),
                         trailing: Icon(Icons.edit),
                         onTap: () {
-                          // log('Agregar al carrito: ' + item.id.toString());
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) =>
-                          //             ProductoScreen(producto: item)));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      VentaScreen(venta: item)));
                         },
                       );
                     });
               } else if (snapshot.hasError) {
                 log(snapshot.error.toString());
-                return Text('Falló la carga de productos');
+                return Text('Falló la carga de Ventas');
               }
               return CircularProgressIndicator();
             }),
@@ -87,12 +87,17 @@ class VentasState extends State<VentasScreen> {
         ),
         onPressed: () {
           // print('agregar');
-          Producto producto = Producto();
+          Venta venta = Venta(
+            id: 0,
+            montoTotal: 0,
+            direccionesId: 0,
+            clientesId: 0,
+          );
 
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => ProductoScreen(producto: producto)));
+                  builder: (context) => VentaScreen(venta: venta)));
         },
         child: Icon(Icons.add));
   }
