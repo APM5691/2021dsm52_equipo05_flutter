@@ -49,30 +49,49 @@ class CarritoProductosState extends State<CarritoProductosScreen> {
     return total.toStringAsFixed(2);
   }
 
-  String tarjeta(valortotal) {
+  void _alerta(BuildContext context, valortotal) {
     int creditoActual = 2000;
-    if (valortotal >= creditoActual) {
-      return "Pago realizado con excito";
-    }
-    valortotal = valortotal - creditoActual;
-    if (valortotal < creditoActual) {
-      return "No tienes el credito suficiente";
-    }
 
-    if (creditoActual <= 0) {
-      return "Error no se puede procesar el pago";
-    }
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text("Listo lo compraste")
+                // FlutterLogo(size: 100.0),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text('Aceptar'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+    valortotal = valortotal - creditoActual;
   }
 
   _addProduct(int index) {
     setState(() {
       _cart[index].numeroExistencias++;
+      comprar++;
     });
   }
 
   _removeProduct(int index) {
     setState(() {
       _cart[index].numeroExistencias--;
+      comprar--;
+      if (comprar <= 0) {
+        comprar = 1;
+      }
     });
   }
 
@@ -152,8 +171,6 @@ class CarritoProductosState extends State<CarritoProductosScreen> {
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Container(
-                                          width: 120,
-                                          height: 40,
                                           decoration: BoxDecoration(
                                               color: Colors.red[600],
                                               boxShadow: [
@@ -243,7 +260,7 @@ class CarritoProductosState extends State<CarritoProductosScreen> {
                 padding: EdgeInsets.only(top: 50),
                 child: ElevatedButton(
                   child: Text("PAGAR"),
-                  onPressed: () => {tarjeta(valorTotal(_cart))},
+                  onPressed: () => {_alerta(context, valorTotal(_cart))},
                   // crear un atarjeta de credito falsa en flutter credito,
                 ),
               ),
