@@ -9,7 +9,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(create: (_) => Auth(), child: LoginScreenMX()));
+  runApp(ChangeNotifierProvider(create: (_) => Auth(), child: MyApp()));
   // cambiar esta linea traspasar contenido de hmescreen desde login mx a main
 }
 
