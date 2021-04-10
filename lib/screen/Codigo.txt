@@ -1,108 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_authentication_with_laravel_sanctum/models/producto.dart';
-
-class CarritoProductosScreen extends StatefulWidget {
-  final List<Producto> _cart;
-
-  CarritoProductosScreen(this._cart);
-
-  @override
-  CarritoProductosState createState() => CarritoProductosState(this._cart);
-}
-
-class CarritoProductosState extends State<CarritoProductosScreen> {
-  double comprar = 1;
-
-  List<Producto> _cart;
-  CarritoProductosState(this._cart);
-  final _scrollController = ScrollController();
-  var _firstScroll = true;
-  bool _enabled = false;
-  int creditoActual =2000;
-  bool aprobar = false;
-
-  Container pagoTotal(List<Producto> _cart) {
-    return Container(
-      alignment: Alignment.centerRight,
-      padding: EdgeInsets.only(left: 120),
-      height: 70,
-      width: 400,
-      color: Colors.grey[200],
-      child: Row(
-        children: <Widget>[
-          // Text("Total:  \$${valorTotal(_cart)}",
-          //Text("Total:  ",
-          Text("Total:  \$${valorTotal(_cart)}",
-              style: new TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14.0,
-                  color: Colors.black))
-        ],
-      ),
-    );
-  }
-
-  String valorTotal(List<Producto> listaProductos) {
-    double total = 0.0;
-
-    for (int i = 0; i < listaProductos.length; i++) {
-      total = total + listaProductos[i].precio * comprar;
-    }
-    return total.toStringAsFixed(2);
-  }
-    
-String tarjeta(creditoActual,aprobar,valortotal) {
-  if(valortotal>=creditoActual){return "Pago realizado con excito";}
-valortotal=valortotal-creditoActual;  
-if(valortotal <creditoActual){return "No tienes el credito suficiente";}
-
-  if(creditoActual <= 0){return "Error no se puede procesar el pago";}
-
-
-}
-
-  _addProduct(int index) {
-    setState(() {
-      _cart[index].numeroExistencias++;
-    });
-  }
-
-  _removeProduct(int index) {
-    setState(() {
-      _cart[index].numeroExistencias--;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.restaurant_menu),
-            onPressed: null,
-            color: Colors.white,
-          )
-        ],
-        title: Text('Detalle',
-            style: new TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 14.0,
-                color: Colors.black)),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
-            setState(() {
-              _cart.length;
-            });
-          },
-          color: Colors.white,
-        ),
-        backgroundColor: Colors.transparent,
-      ),
-      body: GestureDetector(
+ body: GestureDetector(
           onVerticalDragUpdate: (details) {
             if (_enabled && _firstScroll) {
               _scrollController
@@ -121,7 +17,7 @@ if(valortotal <creditoActual){return "No tienes el credito suficiente";}
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: _cart.length,
                 itemBuilder: (context, index) {
-
+                  final String imagen = _cart[index].fotografia;
                   var item = _cart[index];
                   //item.quantity = 0;
                   return Column(
@@ -140,7 +36,7 @@ if(valortotal <creditoActual){return "No tienes el credito suficiente";}
                                 // preguntar al profe
                                 Column(
                                   children: <Widget>[
-                                    Text(item.nombreProducto,
+                                    child: Text(item.nombreProducto,
                                         style: new TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16.0,
@@ -239,22 +135,16 @@ if(valortotal <creditoActual){return "No tienes el credito suficiente";}
                 height: 100,
                 width: 200,
                 padding: EdgeInsets.only(top: 50),
-                child:ElevatedButton(
+                child: RaisedButton(
+                  textColor: Colors.white,
+                  color: Colors.green,
                   child: Text("PAGAR"),
-                  onPressed: () => 
-                  {
-tarjeta(creditoActual, aprobar,valorTotal(_cart))
-
-
-                  },
+                  onPressed: () => {},
                   // crear un atarjeta de credito falsa en flutter credito,
- 
-
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(30.0),
                   ),
                 ),
-
+              ),
             ],
           ))),
-    );
-  }
-}
