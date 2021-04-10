@@ -76,12 +76,11 @@ class _RegistrarseScreenState extends State {
   }
 
   Widget _inputprimerapellido() {
-    return TextFormField(
-      keyboardType: TextInputType.number,
+     return TextFormField(
       // autofocus: true,
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'Primer Apellido:',
+          hintText: 'Primer Apellido',
           labelText: 'Primer Apellido',
           helperText: 'Primer Apellido',
           suffixIcon: Icon(Icons.keyboard),
@@ -94,12 +93,12 @@ class _RegistrarseScreenState extends State {
 
   Widget _inputsegundoapellido() {
     return TextFormField(
-      keyboardType: TextInputType.number,
+      // autofocus: true,
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-          hintText: 'Segundo Apellido:',
-          labelText: 'Segundo Apellido:',
-          helperText: 'Segundo Apellido:',
+          hintText: 'Segundo  Apellido',
+          labelText: 'Segundo  Apellido',
+          helperText: 'Segundo  Apellido',
           suffixIcon: Icon(Icons.keyboard),
           icon: Icon(Icons.keyboard)),
       onChanged: (value) {
@@ -107,6 +106,7 @@ class _RegistrarseScreenState extends State {
       },
     );
   }
+
 
   Widget _inputavatar() {
     return TextFormField(
