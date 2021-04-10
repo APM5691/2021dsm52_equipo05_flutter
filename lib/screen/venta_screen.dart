@@ -25,22 +25,21 @@ class _VentaScreenState extends State<VentaScreen> {
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             children: <Widget>[
-              _inputid(),
+              //_inputid(),
+              //Divider(),
+              _inputmontoTotal(),
               Divider(),
-              _inputmonto_total(),
+              _inputdireccionesId(),
               Divider(),
-              _inputdirecciones_id(),
+              _inputclientesId(),
               Divider(),
-               _inputclientes_id(),
-              Divider(),
-              
               _boton()
             ],
           )),
     );
   }
 
-  Widget _inputid() {
+  /* Widget _inputid() {
     return TextFormField(
       keyboardType: TextInputType.number,
       initialValue: widget.venta.id.toString(),
@@ -55,12 +54,12 @@ class _VentaScreenState extends State<VentaScreen> {
         widget.venta.id = int.parse(value);
       },
     );
-  }
+  }*/
 
-  Widget _inputmonto_total() {
+  Widget _inputmontoTotal() {
     return TextFormField(
       keyboardType: TextInputType.number,
-      initialValue: widget.venta.id.toString(),
+      initialValue: widget.venta.montoTotal.toString(),
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
           hintText: 'Monto Total',
@@ -73,10 +72,11 @@ class _VentaScreenState extends State<VentaScreen> {
       },
     );
   }
-  Widget _inputdirecciones_id() {
-     return TextFormField(
+
+  Widget _inputdireccionesId() {
+    return TextFormField(
       keyboardType: TextInputType.number,
-      initialValue: widget.venta.id.toString(),
+      initialValue: widget.venta.direccionesId.toString(),
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
           hintText: 'Direcciones Id',
@@ -89,10 +89,11 @@ class _VentaScreenState extends State<VentaScreen> {
       },
     );
   }
-Widget _inputclientes_id() {
-   return TextFormField(
+
+  Widget _inputclientesId() {
+    return TextFormField(
       keyboardType: TextInputType.number,
-      initialValue: widget.venta.id.toString(),
+      initialValue: widget.venta.clientesId.toString(),
       decoration: InputDecoration(
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
           hintText: 'Clientes Id',
@@ -105,6 +106,7 @@ Widget _inputclientes_id() {
       },
     );
   }
+
   Widget _boton() {
     return SizedBox(
       width: double.infinity,
@@ -151,7 +153,7 @@ Widget _inputclientes_id() {
       //crear, no existe
       print(widget.venta.toJson());
 
-      Dio.Response response = await dio().post('materiales',
+      Dio.Response response = await dio().post('ventas',
           data: json.encode(widget.venta.toJson()),
           options: Dio.Options(headers: {'auth': true}));
 
@@ -162,7 +164,7 @@ Widget _inputclientes_id() {
       //actualizar
       print(widget.venta.toJson());
       Dio.Response response = await dio().put(
-          'materiales/' + widget.venta.id.toString(),
+          'ventas/' + widget.venta.id.toString(),
           data: json.encode(widget.venta.toJson()),
           options: Dio.Options(headers: {'auth': true}));
 
@@ -175,4 +177,3 @@ Widget _inputclientes_id() {
     // return true;
   }
 }
-
